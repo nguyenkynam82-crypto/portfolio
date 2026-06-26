@@ -73,7 +73,6 @@ export function Navigation() {
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         className="pointer-events-auto flex items-center gap-4 xl:gap-6 justify-self-end"
       >
-        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hidden md:block text-sm font-medium text-white/70 hover:text-white transition-colors shrink-0">Liên hệ</a>
         <Magnetic>
           <a
             href={ZALO}
@@ -81,7 +80,7 @@ export function Navigation() {
             rel="noopener noreferrer"
             className="btn-premium bg-white text-black rounded-full px-6 py-2.5 text-sm font-medium hover:scale-105 transition-transform hidden sm:block shrink-0"
           >
-            Hợp tác cùng kn.
+            in bóc kn. liền nhaa
           </a>
         </Magnetic>
       </motion.div>
