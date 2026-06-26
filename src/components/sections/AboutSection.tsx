@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { MessageSquareQuote, Briefcase, Wallet, Sparkles, Mic } from 'lucide-react';
+import { MessageSquareQuote, Brain, Sparkles, Users } from 'lucide-react';
 
 const capabilities = [
   { icon: MessageSquareQuote, label: 'Truyền đạt & Thuyết phục bằng ngôn từ' },
-  { icon: Briefcase, label: 'Tư duy kinh doanh thực chiến' },
-  { icon: Wallet, label: 'Dẫn dắt & Định hướng tài chính' },
+  { icon: Brain, label: 'Khả năng tiếp thu & học hỏi nhanh nhẹn' },
   { icon: Sparkles, label: 'Sáng tạo trong công việc & học tập' },
-  { icon: Mic, label: 'Diễn xuất & Ca hát' },
+  { icon: Users, label: 'Thân thiện, dễ dàng kết nối các mối quan hệ xung quanh' },
 ];
 
 export function AboutSection() {
