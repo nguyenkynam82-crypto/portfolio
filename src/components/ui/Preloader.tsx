@@ -31,17 +31,18 @@ export function Preloader() {
           <motion.img
             src={logoMark}
             alt="kn."
-            className="w-48 md:w-60 h-auto mb-3"
+            className="w-72 md:w-96 h-auto mb-4"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           />
 
-          {/* Signature name */}
+          {/* Signature name — nudged slightly right (x offset via framer since
+              it controls the transform; a translate-x class would be overridden). */}
           <motion.div
             className="font-display italic text-base md:text-lg text-foreground mb-10"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 8, x: 16 }}
+            animate={{ opacity: 1, y: 0, x: 16 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             ~Nguyễn Kỳ Nam~
