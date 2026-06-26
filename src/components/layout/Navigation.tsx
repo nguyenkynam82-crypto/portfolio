@@ -59,6 +59,12 @@ export function Navigation() {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          onMouseMove={(e) => {
+            const el = e.currentTarget;
+            const r = el.getBoundingClientRect();
+            el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            el.style.setProperty('--my', `${e.clientY - r.top}px`);
+          }}
           className="flex items-center gap-8 liquid-glass rounded-full px-8 py-3 pointer-events-auto"
         >
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Giới thiệu</a>
