@@ -14,10 +14,10 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[8rem] font-heading font-extrabold uppercase tracking-tight leading-[1.1]">
-            {/* Be Vietnam Pro renders Vietnamese stacked diacritics (Ẫ, Ế…)
-                correctly. inline-block + leading + py keeps the gradient covering
-                the full glyph (no clipping of marks). */}
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[9rem] font-heading font-black uppercase tracking-tight leading-[1.1]">
+            {/* Saira Condensed (Anton-like) for the look; Be Vietnam Pro fallback.
+                inline-block + leading + py keeps the gradient covering the full
+                glyph including diacritics (no clipping). */}
             <span className="text-mask-gradient inline-block leading-[1.15] py-2">Ý chí dẫn đến<br />thành công</span>
           </h1>
         </motion.div>
