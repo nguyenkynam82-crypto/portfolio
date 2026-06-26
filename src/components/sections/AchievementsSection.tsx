@@ -64,13 +64,13 @@ const achievements: Achievement[] = [
 // story: câu chuyện hiện khi bấm vào, để '' nếu chưa có.
 type MedalItem = { img: string; distance: string; event: string; year: string; story: string };
 const otherMedals: MedalItem[] = [
-  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2022', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Di Sản Cần Thơ', year: '2023', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2024', story: '' },
-  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Hậu Giang', year: '2024', story: '' },
-  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress', year: '2025', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2022', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2023', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2024', story: '' },
+  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Mekong Delta Marathon Hau Giang', year: '2024', story: '' },
+  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress Marathon Cần Thơ', year: '2025', story: '' },
   { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', story: '' },
-  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'UEH', year: '2026', story: '' },
+  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', story: '' },
 ];
 
 export function AchievementsSection() {
