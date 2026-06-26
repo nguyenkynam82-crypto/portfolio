@@ -19,7 +19,10 @@ export function Hero() {
                 leading-[1.35] gives the 2 lines enough gap so line-2 marks (THÀNH
                 CÔNG) aren't overlapped by line 1. inline-block + py keeps the
                 gradient covering the full glyph incl. diacritics (no clipping). */}
-            <span className="text-mask-gradient inline-block leading-[1.35] py-3">Ý chí dẫn đến<br />thành công</span>
+            {/* Saira's "Ẫ" (â + ngã) glyph drops the circumflex, so patch just
+                that one character with Be Vietnam Pro (font-sans) which renders
+                it correctly. Gradient still applies (clip is on the parent). */}
+            <span className="text-mask-gradient inline-block leading-[1.35] py-3">Ý chí d<span className="font-sans">ẫ</span>n đến<br />thành công</span>
           </h1>
         </motion.div>
       </div>
