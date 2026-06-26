@@ -3,9 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 // Phần tử coi là "tương tác" → con trỏ to ra + xuyên thấu màu khi rê vào.
 const INTERACTIVE = 'a, button, input, textarea, select, label, summary, [role="button"], [role="switch"], [data-cursor="hover"]';
 
+// Nền/nút màu navy của web → chấm phải đổi sang màu nền sáng để thấy được.
+const DARK = '.liquid-glass-blue, [data-cursor-dark]';
+
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
+  const [onDark, setOnDark] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -33,7 +37,11 @@ export function CustomCursor() {
     raf = requestAnimationFrame(loop);
 
     const onMove = (e: MouseEvent) => { target.x = e.clientX; target.y = e.clientY; setVisible(true); };
-    const onOver = (e: MouseEvent) => setHover(!!(e.target as Element)?.closest?.(INTERACTIVE));
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as Element;
+      setHover(!!t?.closest?.(INTERACTIVE));
+      setOnDark(!!t?.closest?.(DARK));
+    };
     const onEnter = () => setVisible(true);
     const onLeave = () => setVisible(false);
 
@@ -60,7 +68,8 @@ export function CustomCursor() {
     if (!dot) return;
     dot.classList.toggle('is-visible', visible);
     dot.classList.toggle('is-hover', hover);
-  }, [visible, hover]);
+    dot.classList.toggle('is-on-dark', onDark);
+  }, [visible, hover, onDark]);
 
   return null;
 }

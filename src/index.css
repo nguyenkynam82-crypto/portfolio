@@ -173,6 +173,9 @@ input:focus-visible,
   /* Navy có sẵn của web + trong suốt (xuyên thấu bằng độ mờ, KHÔNG đảo màu) */
   background: rgba(6, 9, 53, 0.32);
 }
+/* Khi ở trên nền/nút navy (cùng màu) → đổi sang xanh nhạt = màu nền của web */
+.custom-cursor.is-on-dark { background: #E1FFFB; }
+.custom-cursor.is-on-dark.is-hover { background: rgba(225, 255, 251, 0.4); }
 @media (pointer: coarse) {
   .custom-cursor { display: none; }
 }
