@@ -33,13 +33,18 @@ export function ContactSection() {
                   <span className="text-lg font-medium break-all">nguyenkynam82@gmail.com</span>
                 </span>
               </a>
-              <div className="flex items-center gap-4 text-white/80">
-                <span className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0"><MapPin size={20} /></span>
+              <a
+                href="https://maps.app.goo.gl/76FzgiNKMhmcMic79"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group"
+              >
+                <span className="w-12 h-12 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 flex items-center justify-center shrink-0 transition-colors"><MapPin size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Địa chỉ</span>
-                  <span className="text-lg font-medium">Hưng Phú, Cần Thơ, Việt Nam</span>
+                  <span className="text-lg font-medium underline-offset-2 group-hover:underline">Hưng Phú, Cần Thơ, Việt Nam</span>
                 </span>
-              </div>
+              </a>
             </div>
 
             <div className="flex flex-wrap gap-3">

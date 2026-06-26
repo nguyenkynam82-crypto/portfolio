@@ -47,12 +47,15 @@ export function AboutSection() {
           ))}
         </div>
 
-        <motion.div
+        <motion.a
+          href="https://maps.app.goo.gl/76FzgiNKMhmcMic79"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-foreground/70 text-sm font-mono"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-foreground/70 hover:text-white hover:bg-white/10 hover:border-white/20 text-sm font-mono transition-colors cursor-pointer"
         >
           <span className="w-2 h-2 rounded-full bg-primary" /> Cần Thơ, Việt Nam
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   );
