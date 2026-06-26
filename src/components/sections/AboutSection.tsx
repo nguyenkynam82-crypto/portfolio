@@ -24,15 +24,15 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, delay: 0.05 }}
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-10 leading-tight"
         >
-          Xin chào, mình là <span className="text-mask-gradient">Kỳ Nam</span>.
+          Hé lô, tui là <span className="text-mask-gradient">kn.</span>
         </motion.h2>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="space-y-6 text-lg md:text-xl text-foreground/80 font-light leading-relaxed max-w-3xl mb-16"
         >
-          <p>Mình là Kỳ Nam — hiện là học sinh, đồng thời làm kinh doanh và marketing online. Mình làm việc với một triết lý đơn giản: <strong className="text-white font-semibold">thực tế tạo nên giá trị</strong>.</p>
-          <p>Thế mạnh của mình nằm ở tư duy logic, khả năng truyền đạt sắc bén và sự nhạy bén trong kinh doanh. Mình tâm huyết chia sẻ kiến thức, mang lại góc nhìn khách quan và đồng hành cùng các bạn trẻ phát triển tư duy, tự tin giao tiếp và tự chủ tài chính từ sớm.</p>
+          <p>Tui là Kỳ Nam — hiện là học sinh chuẩn bị lên cấp 3, đang sinh sống và học tập tại TP. Cần Thơ. Tới thời điểm này, tui đã sở hữu <strong className="text-white font-semibold">hơn 10 huy chương</strong> ở các cự li chạy bộ như 5km, 10km và 21km.</p>
+          <p>Thế mạnh của tui nằm ở khả năng truyền đạt ý tưởng, dẫn dắt đội nhóm và tư duy logic, sáng tạo trong cả công việc lẫn học tập. Bên cạnh đó, tui còn tự tin ở khả năng kết bạn và giao tiếp với mọi người.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-14">
