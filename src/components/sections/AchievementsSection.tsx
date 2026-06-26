@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Medal, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, type WheelEvent } from 'react';
 import { lockScroll, unlockScroll } from '../../lib/lenis';
 
 const BASE = import.meta.env.BASE_URL;
@@ -83,6 +83,16 @@ export function AchievementsSection() {
 
   const lbPrev = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i - 1 + l.imgs.length) % l.imgs.length } : l)), []);
   const lbNext = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i + 1) % l.imgs.length } : l)), []);
+
+  // Trackpad / chuột: vuốt ngang (wheel deltaX) để lướt ảnh, có throttle.
+  const wheelTs = useRef(0);
+  const onLbWheel = useCallback((e: WheelEvent) => {
+    if (Math.abs(e.deltaX) < 24 || Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    const now = performance.now();
+    if (now - wheelTs.current < 450) return;
+    wheelTs.current = now;
+    if (e.deltaX > 0) lbNext(); else lbPrev();
+  }, [lbPrev, lbNext]);
 
   // Freeze page scroll while any overlay (race/medal modal) is open.
   useEffect(() => {
@@ -360,13 +370,14 @@ export function AchievementsSection() {
             className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-8 bg-[#060935]/92 backdrop-blur-sm"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
+            onWheel={onLbWheel}
             role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to"
           >
             <button
               type="button"
               onClick={() => setLightbox(null)}
               aria-label="Đóng"
-              className="absolute top-5 right-5 z-10 w-11 h-11 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+              className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
             >
               <X className="w-5 h-5" aria-hidden="true" />
             </button>
@@ -376,7 +387,7 @@ export function AchievementsSection() {
                 type="button"
                 onClick={(e) => { e.stopPropagation(); lbPrev(); }}
                 aria-label="Ảnh trước"
-                className="absolute left-3 md:left-6 z-10 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+                className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <ChevronLeft className="w-6 h-6" aria-hidden="true" />
               </button>
@@ -391,9 +402,9 @@ export function AchievementsSection() {
               drag={lightbox.imgs.length > 1 ? 'x' : false}
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.25}
-              onDragEnd={(_, info) => { if (info.offset.x < -80) lbNext(); else if (info.offset.x > 80) lbPrev(); }}
+              onDragEnd={(_, info) => { if (info.offset.x < -60) lbNext(); else if (info.offset.x > 60) lbPrev(); }}
               initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}
-              className="max-w-[88vw] max-h-[82vh] object-contain rounded-xl shadow-2xl select-none touch-none"
+              className="relative z-10 max-w-[88vw] max-h-[82vh] object-contain rounded-xl shadow-2xl select-none touch-none"
             />
 
             {lightbox.imgs.length > 1 && (
@@ -401,14 +412,14 @@ export function AchievementsSection() {
                 type="button"
                 onClick={(e) => { e.stopPropagation(); lbNext(); }}
                 aria-label="Ảnh sau"
-                className="absolute right-3 md:right-6 z-10 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+                className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <ChevronRight className="w-6 h-6" aria-hidden="true" />
               </button>
             )}
 
             {lightbox.imgs.length > 1 && (
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#E1FFFB]/70 text-sm font-mono">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 px-3 py-1 rounded-full bg-[#060935]/60 text-[#E1FFFB]/80 text-sm font-mono">
                 {lightbox.i + 1} / {lightbox.imgs.length}
               </div>
             )}
