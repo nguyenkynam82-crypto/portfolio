@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Music2, Pause, SkipForward, Volume2, Volume1, VolumeX } from 'lucide-react';
+import { glassMove } from '../../lib/glass';
 
 type Track = { id: string; title: string; artist: string };
 
@@ -103,7 +104,8 @@ export function MusicPlayer() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-1.5 bg-white text-black rounded-full p-1.5 pr-2 shadow-2xl border border-black/10"
+          onMouseMove={glassMove}
+          className="flex items-center gap-1.5 liquid-glass-blue text-black rounded-full p-1.5 pr-2"
         >
           <button
             type="button"

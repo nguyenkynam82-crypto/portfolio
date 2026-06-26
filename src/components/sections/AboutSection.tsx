@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MessageSquareQuote, Brain, Sparkles, Users } from 'lucide-react';
+import { glassMove } from '../../lib/glass';
 
 const capabilities = [
   { icon: MessageSquareQuote, label: 'Truyền đạt & Thuyết phục bằng ngôn từ' },
@@ -51,8 +52,9 @@ export function AboutSection() {
           href="https://maps.app.goo.gl/76FzgiNKMhmcMic79"
           target="_blank"
           rel="noopener noreferrer"
+          onMouseMove={glassMove}
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-foreground/70 hover:text-white hover:bg-white/10 hover:border-white/20 text-sm font-mono transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full liquid-glass text-foreground/80 hover:text-white text-sm font-mono cursor-pointer"
         >
           <span className="w-2 h-2 rounded-full bg-primary" /> Cần Thơ, Việt Nam
         </motion.a>

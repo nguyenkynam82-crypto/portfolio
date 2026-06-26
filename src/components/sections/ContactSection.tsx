@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiTiktok, SiGithub, SiSpotify } from 'react-icons/si';
+import { glassMove } from '../../lib/glass';
 
 const ZALO = 'https://zalo.me/0789500902';
 
@@ -27,7 +28,7 @@ export function ContactSection() {
 
             <div className="space-y-5 mb-10">
               <a href="mailto:nguyenkynam82@gmail.com" className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group">
-                <span className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors"><Mail size={20} /></span>
+                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass flex items-center justify-center shrink-0"><Mail size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Email</span>
                   <span className="text-lg font-medium break-all">nguyenkynam82@gmail.com</span>
@@ -39,7 +40,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group"
               >
-                <span className="w-12 h-12 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 group-hover:border-white/20 flex items-center justify-center shrink-0 transition-colors"><MapPin size={20} /></span>
+                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass flex items-center justify-center shrink-0"><MapPin size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Địa chỉ</span>
                   <span className="text-lg font-medium underline-offset-2 group-hover:underline">Hưng Phú, Cần Thơ, Việt Nam</span>
@@ -51,7 +52,8 @@ export function ContactSection() {
               {socials.map(({ label, href, Icon }) => (
                 <a
                   key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/15 hover:-translate-y-1 transition-all flex items-center justify-center"
+                  onMouseMove={glassMove}
+                  className="w-12 h-12 rounded-full liquid-glass text-white hover:-translate-y-1 transition-transform flex items-center justify-center"
                 >
                   <Icon aria-hidden="true" className="w-5 h-5" />
                 </a>
@@ -71,7 +73,8 @@ export function ContactSection() {
             <p className="text-foreground/70 mb-6">Quét mã hoặc bấm nút bên dưới</p>
             <a
               href={ZALO} target="_blank" rel="noopener noreferrer"
-              className="btn-premium bg-white text-black rounded-full px-8 py-3.5 text-base font-semibold hover:scale-105 transition-transform inline-flex items-center gap-2"
+              onMouseMove={glassMove}
+              className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold inline-flex items-center gap-2"
             >
               <MessageCircle size={18} /> Hợp tác cùng kn.
             </a>

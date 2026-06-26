@@ -3,6 +3,7 @@ import logoUrl from '/kn-logo.svg?url';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Magnetic } from '../ui/Magnetic';
+import { glassMove } from '../../lib/glass';
 
 const ZALO = 'https://zalo.me/0789500902';
 
@@ -59,12 +60,7 @@ export function Navigation() {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          onMouseMove={(e) => {
-            const el = e.currentTarget;
-            const r = el.getBoundingClientRect();
-            el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-            el.style.setProperty('--my', `${e.clientY - r.top}px`);
-          }}
+          onMouseMove={glassMove}
           className="flex items-center gap-8 liquid-glass rounded-full px-8 py-3 pointer-events-auto"
         >
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Giới thiệu</a>
@@ -86,7 +82,8 @@ export function Navigation() {
             href={ZALO}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-premium bg-white text-black rounded-full px-6 py-2.5 text-sm font-medium hover:scale-105 transition-transform hidden sm:block shrink-0"
+            onMouseMove={glassMove}
+            className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0"
           >
             in bóc kn. liền nhaa
           </a>

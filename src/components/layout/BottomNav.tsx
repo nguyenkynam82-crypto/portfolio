@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import logoUrl from '/kn-logo.svg?url';
+import { glassMove } from '../../lib/glass';
 
 const ZALO = 'https://zalo.me/0789500902';
 
@@ -16,7 +17,8 @@ export function BottomNav() {
         href={ZALO}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-premium bg-white text-black rounded-full px-6 py-2.5 text-sm font-medium hover:scale-105 transition-transform whitespace-nowrap"
+        onMouseMove={glassMove}
+        className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium whitespace-nowrap"
       >
         Nhắn Zalo
       </a>
