@@ -60,24 +60,29 @@ const achievements: Achievement[] = [
   },
 ];
 
-// Huy chương các giải 5km / 10km / trekking (không phải 21km) — bộ sưu tập
-const otherMedals = [
-  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2022' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Di Sản Cần Thơ', year: '2023' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2024' },
-  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Hậu Giang', year: '2024' },
-  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress', year: '2025' },
-  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025' },
-  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'UEH', year: '2026' },
+// Huy chương các giải 5km / 10km / trekking (không phải 21km) — bộ sưu tập.
+// story: câu chuyện hiện khi bấm vào, để '' nếu chưa có.
+type MedalItem = { img: string; distance: string; event: string; year: string; story: string };
+const otherMedals: MedalItem[] = [
+  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2022', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Di Sản Cần Thơ', year: '2023', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2024', story: '' },
+  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Hậu Giang', year: '2024', story: '' },
+  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress', year: '2025', story: '' },
+  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', story: '' },
+  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'UEH', year: '2026', story: '' },
 ];
 
 export function AchievementsSection() {
   const [active, setActive] = useState<number | null>(null);
+  const [activeMedal, setActiveMedal] = useState<number | null>(null);
   const a = active !== null ? achievements[active] : null;
+  const m = activeMedal !== null ? otherMedals[activeMedal] : null;
 
   useEffect(() => {
-    if (active === null) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setActive(null); };
+    const open = active !== null || activeMedal !== null;
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setActive(null); setActiveMedal(null); } };
     window.addEventListener('keydown', onKey);
     lockScroll();
     const prev = document.body.style.overflow;
@@ -87,7 +92,7 @@ export function AchievementsSection() {
       unlockScroll();
       document.body.style.overflow = prev;
     };
-  }, [active]);
+  }, [active, activeMedal]);
 
   return (
     <section id="achievements" className="relative w-full py-28 md:py-40 bg-black overflow-hidden border-t border-white/10">
@@ -169,25 +174,28 @@ export function AchievementsSection() {
             Các giải 5km, 10km và trekking trên hành trình.
           </motion.p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {otherMedals.map((m, i) => (
-              <motion.figure
-                key={m.img}
+            {otherMedals.map((med, i) => (
+              <motion.button
+                key={med.img}
+                type="button"
+                onClick={() => setActiveMedal(i)}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.45, delay: (i % 4) * 0.06 }}
-                className="group"
+                className="group block w-full text-center cursor-pointer"
               >
                 <div className="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
                   <img
-                    src={`${BASE}${m.img}`}
-                    alt={`Huy chương ${m.distance} ${m.event} ${m.year}`}
+                    src={`${BASE}${med.img}`}
+                    alt={`Huy chương ${med.distance} ${med.event} ${med.year}`}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
                   />
                 </div>
-                <figcaption className="mt-3 text-center">
-                  <div className="text-white font-semibold text-sm leading-tight">{m.distance}</div>
-                  <div className="text-foreground/55 text-xs mt-0.5">{m.event} · {m.year}</div>
-                </figcaption>
-              </motion.figure>
+                <div className="mt-3">
+                  <div className="text-white font-semibold text-sm leading-tight">{med.distance}</div>
+                  <div className="text-foreground/55 text-xs mt-0.5">{med.event} · {med.year}</div>
+                  <span className="inline-block text-primary/60 group-hover:text-primary text-[10px] font-mono uppercase tracking-wider mt-1.5 transition-colors">Xem câu chuyện →</span>
+                </div>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -263,6 +271,57 @@ export function AchievementsSection() {
                     <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
                     {a.story ? (
                       <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{a.story}</p>
+                    ) : (
+                      <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal câu chuyện cho từng huy chương trong bộ sưu tập */}
+      <AnimatePresence>
+        {m && (
+          <motion.div
+            className="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-8"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setActiveMedal(null)}
+            role="dialog" aria-modal="true" aria-label={`Huy chương ${m.distance} ${m.event} ${m.year}`}
+          >
+            <motion.div
+              data-lenis-prevent
+              className="relative z-10 w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
+              initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveMedal(null)}
+                aria-label="Đóng"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB]/80 hover:text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+              >
+                <X className="w-5 h-5" aria-hidden="true" />
+              </button>
+
+              <div className="grid md:grid-cols-2">
+                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6">
+                  <img
+                    src={`${BASE}${m.img}`}
+                    alt={`Huy chương ${m.distance} ${m.event} ${m.year}`}
+                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[75vh]"
+                  />
+                </div>
+                <div className="p-7 md:p-10">
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{m.distance}</h3>
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{m.event} · {m.year}</p>
+                  <div className="border-t border-[#E1FFFB]/15 pt-6">
+                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
+                    {m.story ? (
+                      <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{m.story}</p>
                     ) : (
                       <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
                     )}
