@@ -5,42 +5,59 @@ on:
     branches: ['main', 'master']
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
+# Allow the workflow to publish to GitHub Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Only one Pages deployment at a time; let an in-progress run finish so a
+# deployment is never left half-applied.
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
+
+      # `npm install` (not `npm ci`): the committed lockfile may have been
+      # generated on a different OS, so the platform-specific native binding
+      # for the bundler (Rolldown) can be missing from it. `npm install`
+      # resolves and fetches the correct Linux binding for the runner,
+      # avoiding the "Cannot find native binding" failure that `npm ci` hits.
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
+
       - name: Build
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -14,11 +14,11 @@ export const dictionaries: Record<Language, Dictionary> = {
     'nav.insights': 'Góc Nhìn',
     'nav.contact': 'Liên Hệ',
     
-    'hero.role': 'DonQuaan | Chuyên gia Data Science & Khai Phá Dữ Liệu',
+    'hero.role': 'kn. — Người trẻ kinh doanh thực chiến',
     'hero.cta': 'Khám phá Hành trình',
-    
-    'about.title': 'Bắt đầu từ Đam mê',
-    'about.desc': 'Tôi là Nguyễn Vũ Đông Quân (DonQuaan) - Chuyên gia dữ liệu luôn khao khát biến những con số vô tri thành đột phá kinh doanh.',
+
+    'about.title': 'Bắt đầu sớm, đi thật xa',
+    'about.desc': 'Mình là Nguyễn Kỳ Nam (kn.) — người trẻ kinh doanh thực chiến, chia sẻ cách tư duy, giao tiếp tự tin và tự chủ tài chính để bạn bứt phá từ sớm.',
     
     'stats.experience': 'Năm Kinh Nghiệm',
     'stats.clients': 'Khách Hàng',
@@ -41,7 +41,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     'contact.form.submit': 'Gửi Yêu Cầu Chuyên Gia',
     'contact.form.opened': 'Đã mở email — bấm Gửi để hoàn tất!',
     'contact.location.label': 'Địa chỉ',
-    'contact.location.value': 'Đà Nẵng, Việt Nam',
+    'contact.location.value': 'Cần Thơ, Việt Nam',
 
     'recognitions.title': 'Công Nghệ Cốt Lõi',
     'recognitions.subtitle': 'Tech Stack'
@@ -53,11 +53,11 @@ export const dictionaries: Record<Language, Dictionary> = {
     'nav.insights': 'Insights',
     'nav.contact': 'Contact',
     
-    'hero.role': 'DonQuaan | Data Science & Machine Learning Expert',
+    'hero.role': 'kn. — Young hands-on entrepreneur',
     'hero.cta': 'Explore Journey',
-    
-    'about.title': 'Driven by Passion',
-    'about.desc': 'I am Nguyen Vu Dong Quan (DonQuaan) - A data expert passionate about turning meaningless numbers into meaningful business breakthroughs.',
+
+    'about.title': 'Start early, go far',
+    'about.desc': 'I am Nguyễn Kỳ Nam (kn.) — a young hands-on entrepreneur sharing mindset, confident communication, and early financial independence so you can break through sooner.',
     
     'stats.experience': 'Years Experience',
     'stats.clients': 'Clients Worldwide',
@@ -80,7 +80,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     'contact.form.submit': 'Send Expert Request',
     'contact.form.opened': 'Email draft opened — hit Send to finish!',
     'contact.location.label': 'Location',
-    'contact.location.value': 'Da Nang, Vietnam',
+    'contact.location.value': 'Can Tho, Vietnam',
 
     'recognitions.title': 'Core Technologies',
     'recognitions.subtitle': 'Tech Stack'

@@ -23,8 +23,8 @@ export default defineConfig({
         short_name: 'kn.',
         description: 'Người trẻ kinh doanh thực chiến tại Cần Thơ — tư duy, giao tiếp tự tin và tự chủ tài chính từ sớm.',
         lang: 'vi',
-        start_url: '/Kn/',
-        scope: '/Kn/',
+        start_url: '/portfolio/',
+        scope: '/portfolio/',
         display: 'standalone',
         background_color: '#E1FFFB',
         theme_color: '#060935',
@@ -122,7 +122,7 @@ export default defineConfig({
       }
     })
   ],
-  base: '/Kn/',
+  base: '/portfolio/',
   define: {
     'import.meta.env.VITE_APP_VERSION': JSON.stringify(packageJson.version)
   },

@@ -4,12 +4,12 @@ import { LanguageContext, dictionaries, type Language } from './LanguageContext'
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
-    const saved = localStorage.getItem('donquaan-lang');
+    const saved = localStorage.getItem('kn-lang');
     return (saved === 'en' || saved === 'vi') ? saved : 'vi';
   });
 
   useEffect(() => {
-    localStorage.setItem('donquaan-lang', language);
+    localStorage.setItem('kn-lang', language);
     document.documentElement.lang = language;
     document.title = 'Kn';
   }, [language]);
