@@ -2,22 +2,20 @@ import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100svh] w-full bg-black overflow-hidden flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-20 pb-32">
+    <section className="relative min-h-[100svh] w-full bg-black overflow-hidden flex flex-col justify-start px-6 md:px-12 lg:px-20 pt-20 pb-32">
       {/* Ambient Depth Background */}
       <div className="absolute inset-0 pointer-events-none z-0 ambient-glow" />
 
       {/* Hero Content */}
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col mt-auto mb-auto">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col mt-[12vh] md:mt-[16vh]">
         <motion.div
           initial={{ clipPath: 'polygon(0 120%, 100% 120%, 100% 120%, 0% 120%)', y: 60 }}
           animate={{ clipPath: 'polygon(0 -20%, 100% -20%, 100% 120%, 0% 120%)', y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[9rem] font-heading uppercase tracking-tight leading-[1.05] md:leading-[0.95]">
-            {/* inline-block + leading + py so the gradient covers diacritics
-                (Ý, Ẫ, Ế…) top & bottom — otherwise clipped by background-clip:text. */}
-            <span className="text-mask-gradient inline-block leading-[1.12] py-2">Ý chí dẫn đến<br />thành công</span>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[9rem] font-heading uppercase text-white tracking-tight leading-[1.05] md:leading-[0.95]">
+            Ý chí dẫn đến<br />thành công
           </h1>
         </motion.div>
       </div>
