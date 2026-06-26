@@ -14,21 +14,11 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[9rem] font-heading uppercase text-white tracking-tight leading-[1.05] md:leading-[0.95]">
-            Bắt đầu sớm,<br />đi thật xa.
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[9rem] font-heading uppercase tracking-tight leading-[1.05] md:leading-[0.95]">
+            {/* inline-block + leading + py so the gradient covers diacritics
+                (Ý, Ẫ, Ế…) top & bottom — otherwise clipped by background-clip:text. */}
+            <span className="text-mask-gradient inline-block leading-[1.12] py-2">Ý chí dẫn đến<br />thành công</span>
           </h1>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 80, clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)' }}
-          animate={{ opacity: 1, x: 0, clipPath: 'polygon(-20% -20%, 120% -20%, 120% 120%, -20% 120%)' }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="self-end mt-8 sm:mt-12 md:mt-16 lg:mt-20 text-right relative pb-4"
-        >
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[8rem] font-display italic text-white/90 leading-tight md:leading-[0.95] tracking-tight pr-2">
-            Thực tế <span className="text-mask-gradient font-bold pr-2 sm:pr-4">tạo nên</span><br />
-            giá trị.
-          </h2>
         </motion.div>
       </div>
 
