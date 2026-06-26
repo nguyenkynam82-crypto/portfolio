@@ -15,9 +15,9 @@ export function Hero() {
           className="self-start relative pb-4"
         >
           <h1 className="font-heading font-black uppercase tracking-tight">
-            {/* Font Saira (như ảnh 2) + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG"
-                to hơn + gradient. Vá riêng "ẫ" (Saira vẽ hỏng) bằng Be Vietnam Pro. */}
-            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight">Ý chí d<span className="font-sans">ẫ</span>n đến</span>
+            {/* Font Saira + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG" to + gradient.
+                Saira render dấu Ẫ chuẩn (lúc trước thấy hỏng là do cache font cũ). */}
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight">Ý chí dẫn đến</span>
             <span className="text-mask-gradient inline-block text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[10rem] leading-[1.1] py-2">Thành công</span>
           </h1>
         </motion.div>
