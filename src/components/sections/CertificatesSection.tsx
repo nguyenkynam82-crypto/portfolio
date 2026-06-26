@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { GraduationCap, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { lockScroll, unlockScroll } from '../../lib/lenis';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -47,10 +48,12 @@ export function CertificatesSection() {
     if (active === null) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setActive(null); };
     window.addEventListener('keydown', onKey);
+    lockScroll();
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
+      unlockScroll();
       document.body.style.overflow = prev;
     };
   }, [active]);
@@ -136,6 +139,7 @@ export function CertificatesSection() {
             role="dialog" aria-modal="true" aria-label={cert.title}
           >
             <motion.div
+              data-lenis-prevent
               className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}

@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Preloader } from './components/ui/Preloader';
 import { LanguageProvider } from './contexts/LanguageProvider';
+import { setLenis } from './lib/lenis';
 
 import { HomePage } from './components/pages/HomePage';
 const LegalLayout = lazy(() => import('./components/pages/LegalLayout').then(module => ({ default: module.LegalLayout })));
@@ -29,6 +30,8 @@ function App() {
       touchMultiplier: 2,
     });
 
+    setLenis(lenis);
+
     let rafId = 0;
     function raf(time: number) {
       lenis.raf(time);
@@ -39,6 +42,7 @@ function App() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      setLenis(null);
     };
   }, []);
 
