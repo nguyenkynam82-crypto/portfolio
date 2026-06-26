@@ -37,7 +37,7 @@ export function ContactSection() {
                 <span className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0"><MapPin size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Địa chỉ</span>
-                  <span className="text-lg font-medium">i8, Đường 13, KDC 586, Hưng Phú, Cần Thơ</span>
+                  <span className="text-lg font-medium">Hưng Phú, Cần Thơ, Việt Nam</span>
                 </span>
               </div>
             </div>
