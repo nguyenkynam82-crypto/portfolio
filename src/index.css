@@ -156,8 +156,8 @@ input:focus-visible,
   position: fixed;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #060935; /* navy */
   pointer-events: none;
@@ -168,10 +168,10 @@ input:focus-visible,
 }
 .custom-cursor.is-visible { opacity: 1; }
 .custom-cursor.is-hover {
-  width: 68px;
-  height: 68px;
-  background: #ffffff;
-  mix-blend-mode: difference; /* xuyên thấu / đảo màu phía dưới */
+  width: 96px;
+  height: 96px;
+  /* Navy có sẵn của web + trong suốt (xuyên thấu bằng độ mờ, KHÔNG đảo màu) */
+  background: rgba(6, 9, 53, 0.32);
 }
 @media (pointer: coarse) {
   .custom-cursor { display: none; }
