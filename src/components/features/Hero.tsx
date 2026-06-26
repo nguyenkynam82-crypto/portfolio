@@ -35,17 +35,6 @@ export function Hero() {
       {/* Bottom: sub-headline + scroll cue */}
       <div className="absolute bottom-6 md:bottom-12 left-0 w-full px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row justify-between items-start md:items-end gap-12 z-20 pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 1.2, delay: 1.4, ease: 'easeOut' }}
-          className="max-w-[280px] md:max-w-md pointer-events-auto"
-        >
-          <p className="font-mono text-[10px] md:text-xs lg:text-sm text-foreground/70 leading-relaxed uppercase tracking-widest border-l border-white/30 pl-4 py-1">
-            Mình là Kỳ Nam — người trẻ kinh doanh thực chiến. Mình chia sẻ cách tư duy, giao tiếp tự tin và tự chủ tài chính để bạn bứt phá từ sớm.
-          </p>
-        </motion.div>
-
-        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.8, ease: 'easeOut' }}
