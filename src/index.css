@@ -108,18 +108,27 @@ input:focus-visible,
 
 /* Biến thể XANH (navy trong suốt) cho các nút màu xanh */
 .liquid-glass-blue {
-  background: rgba(6, 9, 53, 0.5);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  /* Navy đặc như cũ + lớp bóng glossy ở trên (kiểu liquid glass iOS) */
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0) 60%),
+    rgba(7, 10, 56, 0.95);
+  backdrop-filter: blur(8px) saturate(1.3);
+  -webkit-backdrop-filter: blur(8px) saturate(1.3);
   border: none;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(6, 9, 53, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.22),
+    0 10px 28px rgba(6, 9, 53, 0.32);
   position: relative;
   overflow: hidden;
-  transition: background 0.45s ease, box-shadow 0.45s ease;
+  transition: box-shadow 0.4s ease, filter 0.4s ease;
 }
 .liquid-glass-blue:hover {
-  background: rgba(6, 9, 53, 0.64);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.32), 0 16px 44px rgba(6, 9, 53, 0.4);
+  filter: brightness(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.22),
+    0 16px 40px rgba(6, 9, 53, 0.42);
 }
 .liquid-glass-blue::after {
   content: '';
@@ -129,9 +138,9 @@ input:focus-visible,
   z-index: -1;
   pointer-events: none;
   background: radial-gradient(
-    130px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(150, 190, 255, 0.5),
-    rgba(150, 190, 255, 0) 70%
+    120px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(170, 200, 255, 0.55),
+    rgba(170, 200, 255, 0) 70%
   );
   opacity: 0;
   transition: opacity 0.4s ease;
