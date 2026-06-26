@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Medal, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Medal, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
 import { lockScroll, unlockScroll } from '../../lib/lenis';
 
 const BASE = import.meta.env.BASE_URL;
@@ -76,23 +76,38 @@ const otherMedals: MedalItem[] = [
 export function AchievementsSection() {
   const [active, setActive] = useState<number | null>(null);
   const [activeMedal, setActiveMedal] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<{ imgs: string[]; i: number } | null>(null);
   const a = active !== null ? achievements[active] : null;
   const m = activeMedal !== null ? otherMedals[activeMedal] : null;
+  const aImgs = a ? [...a.photos, a.medal].filter(Boolean) : [];
 
+  const lbPrev = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i - 1 + l.imgs.length) % l.imgs.length } : l)), []);
+  const lbNext = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i + 1) % l.imgs.length } : l)), []);
+
+  // Freeze page scroll while any overlay (race/medal modal) is open.
   useEffect(() => {
-    const open = active !== null || activeMedal !== null;
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setActive(null); setActiveMedal(null); } };
-    window.addEventListener('keydown', onKey);
+    if (active === null && activeMedal === null) return;
     lockScroll();
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      unlockScroll();
-      document.body.style.overflow = prev;
-    };
+    return () => { unlockScroll(); document.body.style.overflow = prev; };
   }, [active, activeMedal]);
+
+  // Keyboard: lightbox takes priority (Esc / ← / →), else Esc closes the modal.
+  useEffect(() => {
+    if (active === null && activeMedal === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (lightbox) {
+        if (e.key === 'Escape') setLightbox(null);
+        else if (e.key === 'ArrowLeft') lbPrev();
+        else if (e.key === 'ArrowRight') lbNext();
+        return;
+      }
+      if (e.key === 'Escape') { setActive(null); setActiveMedal(null); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [active, activeMedal, lightbox, lbPrev, lbNext]);
 
   return (
     <section id="achievements" className="relative w-full py-28 md:py-40 bg-black overflow-hidden border-t border-white/10">
@@ -252,17 +267,22 @@ export function AchievementsSection() {
                     ))}
                   </dl>
 
-                  {/* Ảnh chạy bộ & huy chương — hiện khi đã có */}
-                  {(a.photos.length > 0 || a.medal) && (
+                  {/* Khoảnh khắc & huy chương — bấm để phóng to + lướt qua lại */}
+                  {aImgs.length > 0 && (
                     <div className="mt-7 border-t border-[#E1FFFB]/15 pt-6">
                       <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Khoảnh khắc &amp; huy chương</span>
                       <div className="grid grid-cols-3 gap-2">
-                        {a.photos.map((p, idx) => (
-                          <img key={idx} src={`${BASE}${p}`} alt={`${a.title} — ảnh ${idx + 1}`} loading="lazy" className="rounded-lg object-cover w-full aspect-square" />
+                        {aImgs.map((img, idx) => (
+                          <button
+                            key={img}
+                            type="button"
+                            onClick={() => setLightbox({ imgs: aImgs, i: idx })}
+                            aria-label="Phóng to ảnh"
+                            className="group rounded-lg overflow-hidden aspect-square cursor-zoom-in"
+                          >
+                            <img src={`${BASE}${img}`} alt={`${a.title} — ảnh ${idx + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                          </button>
                         ))}
-                        {a.medal && (
-                          <img src={`${BASE}${a.medal}`} alt={`Huy chương ${a.title}`} loading="lazy" className="rounded-lg object-cover w-full aspect-square" />
-                        )}
                       </div>
                     </div>
                   )}
@@ -329,6 +349,69 @@ export function AchievementsSection() {
                 </div>
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Lightbox: phóng to ảnh, lướt qua lại (◀ ▶ / vuốt / phím mũi tên) */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-8 bg-[#060935]/92 backdrop-blur-sm"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setLightbox(null)}
+            role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to"
+          >
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Đóng"
+              className="absolute top-5 right-5 z-10 w-11 h-11 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+            >
+              <X className="w-5 h-5" aria-hidden="true" />
+            </button>
+
+            {lightbox.imgs.length > 1 && (
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); lbPrev(); }}
+                aria-label="Ảnh trước"
+                className="absolute left-3 md:left-6 z-10 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
+              </button>
+            )}
+
+            <motion.img
+              key={lightbox.i}
+              src={`${BASE}${lightbox.imgs[lightbox.i]}`}
+              alt="Ảnh phóng to"
+              draggable={false}
+              onClick={(e) => e.stopPropagation()}
+              drag={lightbox.imgs.length > 1 ? 'x' : false}
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.25}
+              onDragEnd={(_, info) => { if (info.offset.x < -80) lbNext(); else if (info.offset.x > 80) lbPrev(); }}
+              initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}
+              className="max-w-[88vw] max-h-[82vh] object-contain rounded-xl shadow-2xl select-none touch-none"
+            />
+
+            {lightbox.imgs.length > 1 && (
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); lbNext(); }}
+                aria-label="Ảnh sau"
+                className="absolute right-3 md:right-6 z-10 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
+              >
+                <ChevronRight className="w-6 h-6" aria-hidden="true" />
+              </button>
+            )}
+
+            {lightbox.imgs.length > 1 && (
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#E1FFFB]/70 text-sm font-mono">
+                {lightbox.i + 1} / {lightbox.imgs.length}
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
