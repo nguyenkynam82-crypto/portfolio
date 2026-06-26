@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Music2, Pause, SkipForward } from 'lucide-react';
+import { Music2, Pause, SkipForward, Volume2, Volume1, VolumeX } from 'lucide-react';
 
 type Track = { id: string; title: string; artist: string };
 
@@ -18,8 +18,12 @@ export function MusicPlayer() {
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [index, setIndex] = useState(0);
+  const [volume, setVolume] = useState(60);
+  const [showVol, setShowVol] = useState(false);
+  const volumeRef = useRef(60);
 
   useEffect(() => { indexRef.current = index; }, [index]);
+  useEffect(() => { volumeRef.current = volume; }, [volume]);
 
   // Load the YouTube IFrame API once and build a hidden audio-only player.
   useEffect(() => {
@@ -32,7 +36,7 @@ export function MusicPlayer() {
         videoId: TRACKS[0].id,
         playerVars: { autoplay: 0, controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
         events: {
-          onReady: () => setReady(true),
+          onReady: () => { setReady(true); playerRef.current?.setVolume(volumeRef.current); },
           onStateChange: (e: any) => {
             const YT = w.YT;
             if (e.data === YT.PlayerState.PLAYING) setPlaying(true);
@@ -74,6 +78,15 @@ export function MusicPlayer() {
     setIndex(nextIdx);
     playerRef.current?.loadVideoById(TRACKS[nextIdx].id);
     playerRef.current?.playVideo();
+  }, []);
+
+  // Chỉ chỉnh âm lượng của YouTube player (nhạc web) — KHÔNG đụng âm lượng thiết bị.
+  const setVol = useCallback((v: number) => {
+    setVolume(v);
+    const p = playerRef.current;
+    if (!p) return;
+    p.unMute?.();
+    p.setVolume(v);
   }, []);
 
   const current = TRACKS[index];
@@ -127,6 +140,40 @@ export function MusicPlayer() {
               </motion.div>
             )}
           </AnimatePresence>
+
+          {/* Âm lượng — chỉ chỉnh nhạc của web (YouTube player), không đụng máy */}
+          <div className="flex items-center shrink-0">
+            <button
+              type="button"
+              onClick={() => setShowVol((s) => !s)}
+              aria-label="Âm lượng nhạc"
+              aria-expanded={showVol}
+              className="w-9 h-9 rounded-full text-black hover:bg-black/10 flex items-center justify-center"
+            >
+              {volume === 0 ? <VolumeX className="w-4 h-4" /> : volume < 50 ? <Volume1 className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
+            <AnimatePresence initial={false}>
+              {showVol && (
+                <motion.div
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: 'auto' }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden flex items-center"
+                >
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={volume}
+                    onChange={(e) => setVol(Number(e.target.value))}
+                    aria-label="Điều chỉnh âm lượng nhạc"
+                    className="w-24 mx-2 accent-[#060935] cursor-pointer"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
     </>
