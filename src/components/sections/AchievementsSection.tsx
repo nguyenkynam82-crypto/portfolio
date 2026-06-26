@@ -104,7 +104,7 @@ export function AchievementsSection() {
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-[1.2] flex items-center gap-3 flex-wrap"
         >
           <Medal className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#medalGrad)" aria-hidden="true" />
-          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Hành trình chạy bộ</span>
+          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Thành tích chạy bộ</span>
         </motion.h2>
 
         <motion.p

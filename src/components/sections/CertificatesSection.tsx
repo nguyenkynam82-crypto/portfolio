@@ -87,14 +87,14 @@ export function CertificatesSection() {
           <GraduationCap className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#capGrad)" aria-hidden="true" />
           {/* inline-block + leading + pb so the gradient background covers the
               full glyph, including descenders (g, y, ỉ…) — otherwise clipped. */}
-          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Chứng chỉ &amp; giấy khen</span>
+          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Chứng chỉ &amp; bằng khen</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="text-lg text-foreground/70 font-light max-w-2xl mb-14"
         >
-          Các chứng chỉ và giấy khen mà tui đã đạt được nè😁.<br />
+          Các chứng chỉ và bằng khen mà tui đã đạt được nè😁.<br />
           Ấn vào để xem hành trình chinh phục của kn. nhé.
         </motion.p>
 
