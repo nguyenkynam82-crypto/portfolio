@@ -39,7 +39,7 @@ export default {
         sans: ['"Be Vietnam Pro"', "sans-serif"],
         display: ['"Playfair Display"', "serif"],
         body: ['"Be Vietnam Pro"', "sans-serif"],
-        heading: ['"Anton"', "sans-serif"],
+        heading: ['"Oswald"', '"Be Vietnam Pro"', "sans-serif"],
       },
       keyframes: {
         "fade-rise": {
