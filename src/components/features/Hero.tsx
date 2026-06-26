@@ -32,20 +32,8 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom: sub-headline + scroll cue */}
-      <div className="absolute bottom-6 md:bottom-12 left-0 w-full px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row justify-between items-start md:items-end gap-12 z-20 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.8, ease: 'easeOut' }}
-          className="flex flex-col items-center gap-4 absolute left-1/2 -translate-x-1/2 bottom-0 hidden md:flex"
-        >
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/60">kn. — Cần Thơ</span>
-          <div className="w-[1px] h-20 bg-white/20 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-white/70 animate-scroll-line" />
-          </div>
-        </motion.div>
-
+      {/* Bottom: scroll-to-about CTA */}
+      <div className="absolute bottom-6 md:bottom-12 left-0 w-full px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row justify-end items-start md:items-end gap-12 z-20 pointer-events-none">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
