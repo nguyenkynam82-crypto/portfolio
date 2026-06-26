@@ -31,7 +31,7 @@ const achievements: Achievement[] = [
     location: 'Cần Thơ',
     bib: '60508',
     photos: [],
-    medal: '',
+    medal: 'thanh-tich/huy-chuong/medal-cantho-heritage-2025.jpg',
     story: '',
   },
   {
@@ -42,8 +42,8 @@ const achievements: Achievement[] = [
     date: '05/10/2025',
     location: 'Hà Nội',
     bib: '632051',
-    photos: [],
-    medal: '',
+    photos: ['thanh-tich/huy-chuong/medal-techcombank-hanoi-2025-2.jpg'],
+    medal: 'thanh-tich/huy-chuong/medal-techcombank-hanoi-2025.jpg',
     story: '',
   },
   {
@@ -55,9 +55,20 @@ const achievements: Achievement[] = [
     location: 'Cần Thơ',
     bib: '80331',
     photos: [],
-    medal: '',
+    medal: 'thanh-tich/huy-chuong/medal-vnexpress-cantho-2026.jpg',
     story: '',
   },
+];
+
+// Huy chương các giải 5km / 10km / trekking (không phải 21km) — bộ sưu tập
+const otherMedals = [
+  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2022' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Di Sản Cần Thơ', year: '2023' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Di Sản Cần Thơ', year: '2024' },
+  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Hậu Giang', year: '2024' },
+  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress', year: '2025' },
+  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025' },
+  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'UEH', year: '2026' },
 ];
 
 export function AchievementsSection() {
@@ -141,6 +152,44 @@ export function AchievementsSection() {
               </div>
             </motion.button>
           ))}
+        </div>
+
+        {/* Bộ sưu tập huy chương 5km / 10km / trekking */}
+        <div className="mt-20 md:mt-24">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6 }}
+            className="text-2xl md:text-3xl font-display font-bold text-white mb-2"
+          >
+            Bộ sưu tập <span className="text-mask-gradient">huy chương</span>
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: 0.05 }}
+            className="text-foreground/60 mb-8"
+          >
+            Các giải 5km, 10km và trekking trên hành trình.
+          </motion.p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            {otherMedals.map((m, i) => (
+              <motion.figure
+                key={m.img}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.45, delay: (i % 4) * 0.06 }}
+                className="group"
+              >
+                <div className="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
+                  <img
+                    src={`${BASE}${m.img}`}
+                    alt={`Huy chương ${m.distance} ${m.event} ${m.year}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                  />
+                </div>
+                <figcaption className="mt-3 text-center">
+                  <div className="text-white font-semibold text-sm leading-tight">{m.distance}</div>
+                  <div className="text-foreground/55 text-xs mt-0.5">{m.event} · {m.year}</div>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
         </div>
       </div>
 
