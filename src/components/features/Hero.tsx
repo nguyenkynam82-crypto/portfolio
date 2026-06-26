@@ -14,11 +14,12 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[9rem] font-heading font-black uppercase tracking-tight leading-[1.1]">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[9rem] font-heading font-black uppercase tracking-tight leading-[1.35]">
             {/* Saira Condensed (Anton-like) for the look; Be Vietnam Pro fallback.
-                inline-block + leading + py keeps the gradient covering the full
-                glyph including diacritics (no clipping). */}
-            <span className="text-mask-gradient inline-block leading-[1.15] py-2">Ý chí dẫn đến<br />thành công</span>
+                leading-[1.35] gives the 2 lines enough gap so line-2 marks (THÀNH
+                CÔNG) aren't overlapped by line 1. inline-block + py keeps the
+                gradient covering the full glyph incl. diacritics (no clipping). */}
+            <span className="text-mask-gradient inline-block leading-[1.35] py-3">Ý chí dẫn đến<br />thành công</span>
           </h1>
         </motion.div>
       </div>
