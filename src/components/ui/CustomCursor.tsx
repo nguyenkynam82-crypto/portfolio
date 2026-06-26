@@ -5,7 +5,6 @@ const INTERACTIVE = 'a, button, input, textarea, select, label, summary, [role="
 const DARK = '.liquid-glass-blue, [data-cursor-dark]';
 
 export function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
   const [onDark, setOnDark] = useState(false);
@@ -15,27 +14,22 @@ export function CustomCursor() {
     // Chỉ bật trên thiết bị có chuột thật (bỏ qua cảm ứng).
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    dot.setAttribute('aria-hidden', 'true');
     const ring = document.createElement('div');
     ring.className = 'cursor-ring';
     ring.setAttribute('aria-hidden', 'true');
-    document.body.append(dot, ring);
-    dotRef.current = dot;
+    document.body.appendChild(ring);
     ringRef.current = ring;
     document.documentElement.classList.add('has-custom-cursor');
 
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const ringPos = { ...mouse };
+    const pos = { ...mouse };
     let raf = 0;
 
     const loop = () => {
-      // Chấm bám sát con trỏ; vòng tròn chạy theo có độ trễ (lerp 0.16).
-      dot.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%)`;
-      ringPos.x += (mouse.x - ringPos.x) * 0.16;
-      ringPos.y += (mouse.y - ringPos.y) * 0.16;
-      ring.style.transform = `translate3d(${ringPos.x}px, ${ringPos.y}px, 0) translate(-50%, -50%)`;
+      // Vòng tròn chạy theo con trỏ có độ trễ mượt (lerp 0.16).
+      pos.x += (mouse.x - pos.x) * 0.16;
+      pos.y += (mouse.y - pos.y) * 0.16;
+      ring.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
@@ -61,21 +55,17 @@ export function CustomCursor() {
       document.removeEventListener('mouseenter', onEnter);
       document.removeEventListener('mouseleave', onLeave);
       document.documentElement.classList.remove('has-custom-cursor');
-      dot.remove();
       ring.remove();
-      dotRef.current = null;
       ringRef.current = null;
     };
   }, []);
 
-  // Đồng bộ class trạng thái (visible / hover / on-dark) lên cả chấm và vòng.
   useEffect(() => {
-    for (const el of [dotRef.current, ringRef.current]) {
-      if (!el) continue;
-      el.classList.toggle('is-visible', visible);
-      el.classList.toggle('is-hover', hover);
-      el.classList.toggle('is-on-dark', onDark);
-    }
+    const el = ringRef.current;
+    if (!el) return;
+    el.classList.toggle('is-visible', visible);
+    el.classList.toggle('is-hover', hover);
+    el.classList.toggle('is-on-dark', onDark);
   }, [visible, hover, onDark]);
 
   return null;
