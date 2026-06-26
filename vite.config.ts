@@ -18,6 +18,11 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
+      // Self-destroying SW: unregisters any previously-installed service worker
+      // and clears its caches, so visitors always get the latest deploy instead
+      // of a stale precached shell. (The aggressive PWA precache was making new
+      // deploys appear "not updated".)
+      selfDestroying: true,
       manifest: {
         name: 'kn. — Nguyễn Kỳ Nam',
         short_name: 'kn.',
