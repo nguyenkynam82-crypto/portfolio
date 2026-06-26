@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, X } from 'lucide-react';
+import { GraduationCap, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const BASE = import.meta.env.BASE_URL;
@@ -69,8 +69,8 @@ export function CertificatesSection() {
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, delay: 0.05 }}
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-tight flex items-center gap-3 flex-wrap"
         >
-          <Award className="w-9 h-9 md:w-12 md:h-12 text-primary shrink-0" aria-hidden="true" />
-          Chứng chỉ &amp; <span className="text-mask-gradient">giấy khen</span>
+          <GraduationCap className="w-9 h-9 md:w-12 md:h-12 text-primary shrink-0" aria-hidden="true" />
+          <span className="text-mask-gradient">Chứng chỉ &amp; giấy khen</span>
         </motion.h2>
 
         <motion.p
@@ -120,7 +120,6 @@ export function CertificatesSection() {
             onClick={() => setActive(null)}
             role="dialog" aria-modal="true" aria-label={cert.title}
           >
-            <div className="absolute inset-0 bg-[#060935]/85 backdrop-blur-sm" />
             <motion.div
               className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
