@@ -2,6 +2,7 @@ import { useEffect, Suspense, lazy } from 'react';
 import Lenis from 'lenis';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Preloader } from './components/ui/Preloader';
+import { CustomCursor } from './components/ui/CustomCursor';
 import { MusicPlayer } from './components/features/MusicPlayer';
 import { LanguageProvider } from './contexts/LanguageProvider';
 import { setLenis } from './lib/lenis';
@@ -74,6 +75,7 @@ function App() {
             </Suspense>
 
             <MusicPlayer />
+            <CustomCursor />
           </div>
         </HashRouter>
     </LanguageProvider>

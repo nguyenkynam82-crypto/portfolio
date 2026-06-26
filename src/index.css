@@ -147,6 +147,36 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
+/* ── Con trỏ tuỳ biến: chấm navy đi theo có độ trễ; hover thì xuyên thấu màu ── */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #060935; /* navy */
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: width 0.28s ease, height 0.28s ease, background-color 0.28s ease, opacity 0.3s ease;
+  will-change: transform;
+}
+.custom-cursor.is-visible { opacity: 1; }
+.custom-cursor.is-hover {
+  width: 46px;
+  height: 46px;
+  background: #ffffff;
+  mix-blend-mode: difference; /* xuyên thấu / đảo màu phía dưới */
+}
+@media (pointer: coarse) {
+  .custom-cursor { display: none; }
+}
+
 .liquid-glass::before {
   content: '';
   position: absolute;
