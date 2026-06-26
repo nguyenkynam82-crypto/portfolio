@@ -42,8 +42,8 @@ export function Preloader() {
             {progressText}
           </motion.div>
           
-          <div className="text-muted-foreground text-xs uppercase tracking-[0.3em] mt-4">
-            Đang tải
+          <div className="text-muted-foreground text-xs tracking-[0.3em] mt-4">
+            ...loading...
           </div>
         </motion.div>
       )}
