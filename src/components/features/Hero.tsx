@@ -14,8 +14,11 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[8.5rem] xl:text-[10.5rem] font-heading font-bold uppercase text-white tracking-tight leading-[1.05] md:leading-[0.95]">
-            Ý chí dẫn đến<br />thành công
+          <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-heading font-bold uppercase tracking-tight leading-[1.2]">
+            {/* gradient span: inline-block + leading + py so diacritics aren't
+                clipped by background-clip:text; leading-[1.2] spaces the 2 lines
+                so line-2 marks (THÀNH CÔNG) don't collide with line 1. */}
+            <span className="text-mask-gradient inline-block leading-[1.2] py-3">Ý chí dẫn đến<br />thành công</span>
           </h1>
         </motion.div>
       </div>
