@@ -61,12 +61,12 @@ export function Navigation() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           onMouseMove={glassMove}
-          className="flex items-center gap-8 liquid-glass rounded-full px-8 py-3 pointer-events-auto"
+          className="flex items-center gap-1 liquid-glass rounded-full px-2 py-1.5 pointer-events-auto"
         >
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Giới thiệu</a>
-          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Thành tích</a>
-          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Chứng chỉ</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Liên hệ</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Giới thiệu</a>
+          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Thành tích</a>
+          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Chứng chỉ</a>
+          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Liên hệ</a>
         </motion.nav>
       </div>
 
