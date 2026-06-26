@@ -89,7 +89,9 @@ export function CertificatesSection() {
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group text-left rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-pointer"
             >
-              <div className="aspect-[3/4] bg-white flex items-center justify-center overflow-hidden">
+              {/* White frame so each certificate's own white margins blend in —
+                  keeps every card visually aligned regardless of source crop. */}
+              <div className="aspect-[3/4] bg-[#ffffff] flex items-center justify-center overflow-hidden">
                 <img
                   src={`${BASE}${c.img}`}
                   alt={c.title}
@@ -118,9 +120,9 @@ export function CertificatesSection() {
             onClick={() => setActive(null)}
             role="dialog" aria-modal="true" aria-label={cert.title}
           >
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-[#060935]/85 backdrop-blur-sm" />
             <motion.div
-              className="relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0b0b12] border border-white/10 rounded-2xl shadow-2xl"
+              className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
@@ -129,28 +131,28 @@ export function CertificatesSection() {
                 type="button"
                 onClick={() => setActive(null)}
                 aria-label="Đóng"
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/50 border border-white/15 text-white/80 hover:text-white hover:bg-black/70 flex items-center justify-center transition-colors"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB]/80 hover:text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
               </button>
 
               <div className="grid md:grid-cols-2">
-                <div className="bg-white flex items-center justify-center p-4 md:p-6">
+                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6">
                   <img
                     src={`${BASE}${cert.img}`}
                     alt={cert.title}
-                    className="w-full h-auto object-contain max-h-[40vh] md:max-h-[70vh]"
+                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[80vh]"
                   />
                 </div>
-                <div className="p-6 md:p-8">
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-mask-gradient mb-2 leading-tight">{cert.title}</h3>
-                  <p className="text-foreground/60 text-sm mb-6 leading-relaxed">{cert.desc}</p>
-                  <div className="border-t border-white/10 pt-6">
-                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-foreground/40 mb-3">Câu chuyện</span>
+                <div className="p-7 md:p-10">
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-3 leading-tight">{cert.title}</h3>
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7 leading-relaxed">{cert.desc}</p>
+                  <div className="border-t border-[#E1FFFB]/15 pt-6">
+                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
                     {cert.story ? (
-                      <p className="text-foreground/80 leading-relaxed whitespace-pre-line">{cert.story}</p>
+                      <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{cert.story}</p>
                     ) : (
-                      <p className="text-foreground/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
+                      <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
                     )}
                   </div>
                 </div>

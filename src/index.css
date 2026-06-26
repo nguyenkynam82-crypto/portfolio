@@ -143,6 +143,18 @@ input:focus-visible,
   animation: gradient-flow 6s ease infinite;
 }
 
+/* Light variant — gradient title for use on dark surfaces (e.g. modals),
+   bright colours so it stands out against a near-black background. */
+.text-gradient-light {
+  background: linear-gradient(270deg, #E1FFFB, #7fd7ff, #c9b6ff, #E1FFFB);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-flow 6s ease infinite;
+}
+
 @keyframes scroll-line-drop {
   0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
   30% { transform: scaleY(1); transform-origin: top; opacity: 1; }
