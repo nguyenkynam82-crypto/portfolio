@@ -1,5 +1,6 @@
 import { Hero } from '../features/Hero';
 import { AboutSection } from '../sections/AboutSection';
+import { AchievementsSection } from '../sections/AchievementsSection';
 import { CertificatesSection } from '../sections/CertificatesSection';
 import { ContactSection } from '../sections/ContactSection';
 import { BottomNav } from '../layout/BottomNav';
@@ -7,7 +8,7 @@ import { Navigation } from '../layout/Navigation';
 import { Footer } from '../layout/Footer';
 
 // Personal-intro site for kn. (Nguyễn Kỳ Nam):
-// Hero -> Giới thiệu -> Chứng chỉ -> Liên hệ.
+// Hero -> Giới thiệu -> Thành tích -> Chứng chỉ -> Liên hệ.
 export function HomePage() {
   return (
     <>
@@ -17,6 +18,7 @@ export function HomePage() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <AboutSection />
+        <AchievementsSection />
         <CertificatesSection />
         <ContactSection />
       </main>
