@@ -11,7 +11,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('kn-lang', language);
     document.documentElement.lang = language;
-    document.title = 'Kn';
+    document.title = 'kn.';
   }, [language]);
 
   const t = (key: string) => {
