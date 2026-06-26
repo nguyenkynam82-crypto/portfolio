@@ -65,11 +65,23 @@ export function CertificatesSection() {
           Chứng chỉ
         </motion.span>
 
+        {/* Gradient dùng để tô nét icon nón tốt nghiệp (SVG stroke không
+            background-clip được như chữ, nên phải dùng linearGradient riêng). */}
+        <svg width="0" height="0" className="absolute" aria-hidden="true">
+          <defs>
+            <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3a52c4" />
+              <stop offset="50%" stopColor="#14205e" />
+              <stop offset="100%" stopColor="#060935" />
+            </linearGradient>
+          </defs>
+        </svg>
+
         <motion.h2
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, delay: 0.05 }}
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-tight flex items-center gap-3 flex-wrap"
         >
-          <GraduationCap className="w-9 h-9 md:w-12 md:h-12 text-primary shrink-0" aria-hidden="true" />
+          <GraduationCap className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#capGrad)" aria-hidden="true" />
           <span className="text-mask-gradient">Chứng chỉ &amp; giấy khen</span>
         </motion.h2>
 
@@ -77,7 +89,7 @@ export function CertificatesSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="text-lg text-foreground/70 font-light max-w-2xl mb-14"
         >
-          Những chứng chỉ tiếng Anh và giấy khen học tập mình đã đạt được. Bấm vào từng cái để xem câu chuyện phía sau.
+          Các chứng chỉ và giấy khen mà tui đã đạt được nè😁. Ấn vào để xem hành trình chinh phục của kn. nhé.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
