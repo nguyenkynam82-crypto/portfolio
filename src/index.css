@@ -156,8 +156,8 @@ input:focus-visible,
   position: fixed;
   top: 0;
   left: 0;
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #060935; /* navy */
   pointer-events: none;
@@ -168,8 +168,8 @@ input:focus-visible,
 }
 .custom-cursor.is-visible { opacity: 1; }
 .custom-cursor.is-hover {
-  width: 46px;
-  height: 46px;
+  width: 68px;
+  height: 68px;
   background: #ffffff;
   mix-blend-mode: difference; /* xuyên thấu / đảo màu phía dưới */
 }
