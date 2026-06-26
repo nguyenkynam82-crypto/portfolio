@@ -31,7 +31,7 @@ export function Preloader() {
           <motion.img
             src={logoMark}
             alt="kn."
-            className="w-28 md:w-32 h-auto mb-5"
+            className="w-48 md:w-60 h-auto mb-3"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -39,7 +39,7 @@ export function Preloader() {
 
           {/* Signature name */}
           <motion.div
-            className="font-display italic text-2xl md:text-3xl text-foreground mb-10"
+            className="font-display italic text-base md:text-lg text-foreground mb-10"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
