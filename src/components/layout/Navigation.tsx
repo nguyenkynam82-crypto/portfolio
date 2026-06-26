@@ -59,7 +59,7 @@ export function Navigation() {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-8 rounded-full px-8 py-3 pointer-events-auto border-2 border-white/40 bg-[#ffffff]/40 backdrop-blur-md shadow-xl"
+          className="flex items-center gap-8 liquid-glass rounded-full px-8 py-3 pointer-events-auto"
         >
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Giới thiệu</a>
           <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="text-sm font-medium text-white/70 hover:text-white transition-colors">Thành tích</a>
