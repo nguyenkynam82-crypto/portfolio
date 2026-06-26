@@ -79,17 +79,20 @@ export function CertificatesSection() {
 
         <motion.h2
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, delay: 0.05 }}
-          className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-tight flex items-center gap-3 flex-wrap"
+          className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-[1.2] flex items-center gap-3 flex-wrap"
         >
           <GraduationCap className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#capGrad)" aria-hidden="true" />
-          <span className="text-mask-gradient">Chứng chỉ &amp; giấy khen</span>
+          {/* inline-block + leading + pb so the gradient background covers the
+              full glyph, including descenders (g, y, ỉ…) — otherwise clipped. */}
+          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Chứng chỉ &amp; giấy khen</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="text-lg text-foreground/70 font-light max-w-2xl mb-14"
         >
-          Các chứng chỉ và giấy khen mà tui đã đạt được nè😁. Ấn vào để xem hành trình chinh phục của kn. nhé.
+          Các chứng chỉ và giấy khen mà tui đã đạt được nè😁.<br />
+          Ấn vào để xem hành trình chinh phục của kn. nhé.
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
