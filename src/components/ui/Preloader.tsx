@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from 'framer-motion';
-import logoFull from '/kn-logo-full.svg?url';
+import logoMark from '/kn-logo.svg?url';
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,21 +27,31 @@ export function Preloader() {
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background"
         >
-          {/* Logo */}
+          {/* Logo mark */}
           <motion.img
-            src={logoFull}
-            alt="kn. — Nguyễn Kỳ Nam"
-            className="w-56 md:w-64 h-auto mb-8"
+            src={logoMark}
+            alt="kn."
+            className="w-28 md:w-32 h-auto mb-5"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           />
 
+          {/* Signature name */}
+          <motion.div
+            className="font-display italic text-2xl md:text-3xl text-foreground mb-10"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            ~Nguyễn Kỳ Nam~
+          </motion.div>
+
           {/* Progress Number */}
           <motion.div className="font-display text-4xl text-foreground">
             {progressText}
           </motion.div>
-          
+
           <div className="text-muted-foreground text-xs tracking-[0.3em] mt-4">
             ...loading...
           </div>
