@@ -147,37 +147,60 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
-/* ── Con trỏ tuỳ biến: chấm navy đi theo có độ trễ; hover thì xuyên thấu màu ── */
+/* ── Con trỏ tuỳ biến kiểu donquaan: chấm navy bám sát + vòng tròn chạy theo
+      có độ trễ; vòng nở to khi rê vào nút. Trên nền navy đổi sang xanh nhạt. ── */
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
 }
-.custom-cursor {
+.cursor-dot,
+.cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 38px;
-  height: 38px;
   border-radius: 50%;
-  background: #060935; /* navy */
   pointer-events: none;
-  z-index: 99999;
   opacity: 0;
-  transition: width 0.28s ease, height 0.28s ease, background-color 0.28s ease, opacity 0.3s ease;
   will-change: transform;
 }
-.custom-cursor.is-visible { opacity: 1; }
-.custom-cursor.is-hover {
-  width: 96px;
-  height: 96px;
-  /* Navy có sẵn của web + trong suốt (xuyên thấu bằng độ mờ, KHÔNG đảo màu) */
-  background: rgba(6, 9, 53, 0.32);
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #060935; /* navy */
+  z-index: 100000;
+  transition: opacity 0.3s ease, background-color 0.25s ease, width 0.2s ease, height 0.2s ease;
 }
-/* Khi ở trên nền/nút navy (cùng màu) → đổi sang xanh nhạt = màu nền của web */
-.custom-cursor.is-on-dark { background: #E1FFFB; }
-.custom-cursor.is-on-dark.is-hover { background: rgba(225, 255, 251, 0.4); }
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(6, 9, 53, 0.45); /* vòng navy */
+  z-index: 99999;
+  transition: opacity 0.3s ease, width 0.28s ease, height 0.28s ease,
+    background-color 0.28s ease, border-color 0.28s ease;
+}
+.cursor-dot.is-visible,
+.cursor-ring.is-visible { opacity: 1; }
+
+/* Rê vào nút/link: vòng nở to + đổ nền nhạt; chấm thu nhỏ */
+.cursor-ring.is-hover {
+  width: 66px;
+  height: 66px;
+  background: rgba(6, 9, 53, 0.12);
+  border-color: rgba(6, 9, 53, 0.5);
+}
+.cursor-dot.is-hover { width: 6px; height: 6px; }
+
+/* Trên nền/nút navy (cùng màu) → đổi sang xanh nhạt = màu nền của web */
+.cursor-dot.is-on-dark { background: #E1FFFB; }
+.cursor-ring.is-on-dark { border-color: rgba(225, 255, 251, 0.65); }
+.cursor-ring.is-on-dark.is-hover {
+  background: rgba(225, 255, 251, 0.16);
+  border-color: rgba(225, 255, 251, 0.8);
+}
+
 @media (pointer: coarse) {
-  .custom-cursor { display: none; }
+  .cursor-dot,
+  .cursor-ring { display: none; }
 }
 
 .liquid-glass::before {
