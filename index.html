@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Website cho Nguyễn Kỳ Nam (kn.). Template thiết kế & phát triển bởi DonQuaan. -->
+
+    <!-- Content-Security-Policy (delivered via <meta> — GitHub Pages cannot set HTTP headers).
+         script-src is STRICT: 'self' + a sha256 hash for the tiny non-blocking font loader,
+         NO 'unsafe-inline' (closes the main XSS vector). style-src keeps 'unsafe-inline'
+         because Tailwind/React/Framer emit inline styles — not a script-execution vector.
+         HSTS / COOP / X-Frame-Options / X-Content-Type-Options / Permissions-Policy need real
+         HTTP response headers -> NOT settable on static GitHub Pages (need a proxy e.g. Cloudflare). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-3j0Qvw3SOh6wKbLsxxjBgz1bMET3yr4iV5dtuThJ1Cw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://mixerno.space https://discord.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; upgrade-insecure-requests" />
+
+    <meta name="theme-color" content="#060935">
+    <title>Kn</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="kn. — Nguyễn Kỳ Nam | Kinh doanh & Tự chủ tài chính trẻ" />
+    <meta name="description" content="kn. (Nguyễn Kỳ Nam) — người trẻ kinh doanh thực chiến tại Cần Thơ. Chia sẻ tư duy kinh doanh, giao tiếp tự tin và tự chủ tài chính từ sớm." />
+    <meta name="keywords" content="Nguyễn Kỳ Nam, kn, kinh doanh trẻ, marketing online, tự chủ tài chính, Cần Thơ" />
+    <meta name="author" content="Nguyễn Kỳ Nam" />
+    <meta name="copyright" content="© Nguyễn Kỳ Nam (kn.)" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./kn-logo.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="./favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+
+    <!-- Canonical: thêm khi có tên miền riêng, vd: <link rel="canonical" href="https://ten-mien.com/" /> -->
+
+    <!-- Open Graph / Facebook / Zalo -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="profile:first_name" content="Kỳ Nam" />
+    <meta property="profile:last_name" content="Nguyễn" />
+    <meta property="og:site_name" content="kn. — Nguyễn Kỳ Nam" />
+    <meta property="og:title" content="kn. — Nguyễn Kỳ Nam | Kinh doanh & Tự chủ tài chính trẻ" />
+    <meta property="og:description" content="Người trẻ kinh doanh thực chiến tại Cần Thơ — chia sẻ tư duy, giao tiếp tự tin và tự chủ tài chính từ sớm." />
+    <meta property="og:image" content="./og-hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="kn. — Nguyễn Kỳ Nam" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="kn. — Nguyễn Kỳ Nam" />
+    <meta name="twitter:description" content="Người trẻ kinh doanh thực chiến tại Cần Thơ — tư duy, giao tiếp tự tin & tự chủ tài chính từ sớm." />
+    <meta name="twitter:image" content="./og-hero.png" />
+    <meta name="twitter:image:alt" content="kn. — Nguyễn Kỳ Nam" />
+
+    <!-- Fonts & APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" />
+    <link id="gfonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" media="print" />
+    <script>(function(){var g=document.getElementById('gfonts');function a(){g.media='all'}g.sheet?a():g.addEventListener('load',a)})()</script>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" />
+    </noscript>
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nguyễn Kỳ Nam",
+      "alternateName": "kn.",
+      "jobTitle": "Kinh doanh & Cố vấn tài chính trẻ",
+      "description": "Người trẻ kinh doanh thực chiến tại Cần Thơ — chia sẻ tư duy kinh doanh, giao tiếp tự tin và tự chủ tài chính từ sớm.",
+      "image": "./kn-logo.png",
+      "email": "mailto:nguyenkynam82@gmail.com",
+      "knowsAbout": ["Kinh doanh", "Marketing online", "Tài chính cá nhân", "Phát triển bản thân"],
+      "knowsLanguage": ["Vietnamese"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cần Thơ",
+        "addressCountry": "VN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/nguyen.ky.nam.461926/",
+        "https://www.instagram.com/sweatheart_3110/",
+        "https://www.tiktok.com/@kn.ng211",
+        "https://github.com/nguyenkynam82-crypto/CV",
+        "https://open.spotify.com/user/314i5ugiwnduiau7ckqlyc3eadei"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #E1FFFB; color: #060935; font-family: sans-serif;">
+        <noscript>Bạn cần bật JavaScript để chạy ứng dụng này.</noscript>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

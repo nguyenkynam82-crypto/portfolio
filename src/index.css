@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* LIGHT THEME (client kn.): mint background #E1FFFB + navy text #060935 */
+    --background: 170 100% 94%;
+    --foreground: 236 80% 12%;
+    --muted: 170 40% 88%;
+    --muted-foreground: 236 28% 32%;
+    --primary: 236 80% 12%;
+    --primary-foreground: 170 100% 94%;
+    --secondary: 170 40% 88%;
+    --accent: 170 40% 88%;
+    --border: 200 35% 80%;
+    --input: 200 35% 80%;
+  }
+}
+
+/* Custom Scrollbar for Modals */
+.custom-scrollbar {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ── Focus Visibility (Keyboard Navigation) ── */
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid hsl(217, 91%, 60%);
+  outline-offset: 3px;
+  border-radius: 4px;
+  transition: outline-offset 0.15s ease;
+}
+
+/* Remove default focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-premium {
+  box-shadow: 0 1px 2px 0 rgba(255,255,255,0.05),
+              0 4px 12px 0 rgba(255,255,255,0.05),
+              inset 0 2px 4px 0 rgba(255,255,255,0.5);
+}
+
+/* ── Hide Scrollbar globally ── */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Cinematic Hero Utilities ── */
+@keyframes ambient-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.ambient-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(6, 9, 53, 0.06) 0%, transparent 65%);
+  animation: ambient-pulse 8s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-mask-gradient {
+  background: linear-gradient(270deg, #060935, #3a52c4, #060935, #14205e);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 6s ease infinite;
+}
+
+@keyframes scroll-line-drop {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  30% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  70% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+.animate-scroll-line {
+  animation: scroll-line-drop 2.5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+/* ── Performance Optimization ── */
+.content-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+.animate-marquee {
+  will-change: transform;
+}
+
+/* ── Skip-to-content link (keyboard accessibility) ── */
+.skip-link {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -130%);
+  z-index: 100000;
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 0 0 12px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  outline: 2px solid hsl(217, 91%, 60%);
+  outline-offset: 2px;
+}

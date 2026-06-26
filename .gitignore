@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build outputs (GitHub Pages deploys via Actions, not from the repo)
+dist
+docs
+
+# Secrets — NEVER commit credentials / API keys / tokens
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.git-credentials
+.npmrc
+secrets/
+*.token
+
+# Local SEO strategy doc — keep private (not published)
+SEO-AUDIT.md
+
+# Handover questionnaire — keep private (not published)
+BO-CAU-HOI-BAN-GIAO-WEB.txt
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md

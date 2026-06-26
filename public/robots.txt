@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap: https://TEN-MIEN-CUA-BAN/sitemap.xml  (them khi co ten mien)
