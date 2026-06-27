@@ -261,11 +261,11 @@ export function AchievementsSection() {
               </button>
 
               <div className="grid md:grid-cols-2">
-                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6">
+                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6 overflow-hidden group">
                   <img
                     src={`${BASE}${a.cert}`}
                     alt={a.title}
-                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[80vh]"
+                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[80vh] group-hover:scale-[1.06] transition-transform duration-500 ease-out"
                   />
                 </div>
                 <div className="p-7 md:p-10">
@@ -299,7 +299,7 @@ export function AchievementsSection() {
                             aria-label="Phóng to ảnh"
                             className="group rounded-lg overflow-hidden aspect-square cursor-zoom-in"
                           >
-                            <img src={`${BASE}${img}`} alt={`${a.title} — ảnh ${idx + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                            <img src={`${BASE}${img}`} alt={`${a.title} — ảnh ${idx + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                           </button>
                         ))}
                       </div>
@@ -348,11 +348,11 @@ export function AchievementsSection() {
               </button>
 
               <div className="grid md:grid-cols-2">
-                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6">
+                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6 overflow-hidden group">
                   <img
                     src={`${BASE}${m.img}`}
                     alt={`Huy chương ${m.distance} ${m.event} ${m.year}`}
-                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[75vh]"
+                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[75vh] group-hover:scale-[1.06] transition-transform duration-500 ease-out"
                   />
                 </div>
                 <div className="p-7 md:p-10">

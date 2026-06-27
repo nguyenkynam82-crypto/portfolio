@@ -160,11 +160,11 @@ export function CertificatesSection() {
               </button>
 
               <div className="grid md:grid-cols-2">
-                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6">
+                <div className="bg-[#ffffff] flex items-center justify-center p-4 md:p-6 overflow-hidden group">
                   <img
                     src={`${BASE}${cert.img}`}
                     alt={cert.title}
-                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[80vh]"
+                    className="w-full h-auto object-contain max-h-[45vh] md:max-h-[80vh] group-hover:scale-[1.06] transition-transform duration-500 ease-out"
                   />
                 </div>
                 <div className="p-7 md:p-10">
