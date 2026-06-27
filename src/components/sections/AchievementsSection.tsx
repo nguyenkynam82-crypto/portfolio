@@ -81,8 +81,9 @@ export function AchievementsSection() {
   const m = activeMedal !== null ? otherMedals[activeMedal] : null;
   const aImgs = a ? [...a.photos, a.medal].filter(Boolean) : [];
 
-  const lbPrev = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i - 1 + l.imgs.length) % l.imgs.length } : l)), []);
-  const lbNext = useCallback(() => setLightbox((l) => (l ? { ...l, i: (l.i + 1) % l.imgs.length } : l)), []);
+  // Clamp ở 2 đầu (KHÔNG lướt vòng): ảnh đầu hết prev, ảnh cuối hết next.
+  const lbPrev = useCallback(() => setLightbox((l) => (l ? { ...l, i: Math.max(0, l.i - 1) } : l)), []);
+  const lbNext = useCallback(() => setLightbox((l) => (l ? { ...l, i: Math.min(l.imgs.length - 1, l.i + 1) } : l)), []);
 
   // Trackpad / chuột: vuốt ngang (wheel deltaX) để lướt ảnh, có throttle.
   const wheelTs = useRef(0);
@@ -393,17 +394,6 @@ export function AchievementsSection() {
               <X className="w-5 h-5" aria-hidden="true" />
             </button>
 
-            {lightbox.imgs.length > 1 && (
-              <button
-                type="button"
-                onClick={(e) => { e.stopPropagation(); lbPrev(); }}
-                aria-label="Ảnh trước"
-                className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
-              >
-                <ChevronLeft className="w-6 h-6" aria-hidden="true" />
-              </button>
-            )}
-
             <motion.img
               key={lightbox.i}
               src={`${BASE}${lightbox.imgs[lightbox.i]}`}
@@ -419,19 +409,28 @@ export function AchievementsSection() {
             />
 
             {lightbox.imgs.length > 1 && (
-              <button
-                type="button"
-                onClick={(e) => { e.stopPropagation(); lbNext(); }}
-                aria-label="Ảnh sau"
-                className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
-              >
-                <ChevronRight className="w-6 h-6" aria-hidden="true" />
-              </button>
-            )}
-
-            {lightbox.imgs.length > 1 && (
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 px-3 py-1 rounded-full bg-[#060935]/60 text-[#E1FFFB]/80 text-sm font-mono">
-                {lightbox.i + 1} / {lightbox.imgs.length}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); lbPrev(); }}
+                  disabled={lightbox.i === 0}
+                  aria-label="Ảnh trước"
+                  className="w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] flex items-center justify-center transition-all enabled:hover:bg-[#E1FFFB]/20 disabled:opacity-25 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+                </button>
+                <div className="px-3 py-1.5 rounded-full bg-[#060935]/60 text-[#E1FFFB]/85 text-sm font-mono min-w-[68px] text-center">
+                  {lightbox.i + 1} / {lightbox.imgs.length}
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); lbNext(); }}
+                  disabled={lightbox.i === lightbox.imgs.length - 1}
+                  aria-label="Ảnh sau"
+                  className="w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] flex items-center justify-center transition-all enabled:hover:bg-[#E1FFFB]/20 disabled:opacity-25 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="w-5 h-5" aria-hidden="true" />
+                </button>
               </div>
             )}
           </motion.div>
