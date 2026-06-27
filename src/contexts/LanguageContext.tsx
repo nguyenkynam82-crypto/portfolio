@@ -91,7 +91,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     'nav.achievements': 'Achievements',
     'nav.certificates': 'Certificates',
     'nav.contact': 'Contact',
-    'nav.cta': "Let's collab!",
+    'nav.cta': 'inbox kn. right away!',
     'nav.zalo': 'Message Zalo',
 
     // Hero
