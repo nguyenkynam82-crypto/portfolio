@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle, Heart } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
 import { glassMove } from '../../lib/glass';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const ZALO = 'https://zalo.me/0789500902';
 
@@ -14,23 +15,24 @@ const socials = [
 ];
 
 export function ContactSection() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="relative w-full py-28 md:py-40 bg-black border-t border-white/10 overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-10 items-center">
           {/* Left: info + socials */}
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8 }}>
-            <span className="text-sm md:text-base tracking-[0.3em] uppercase font-mono text-foreground/60 block mb-5">Liên hệ</span>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6 leading-tight">Cùng nhau<br />tạo giá trị.</h2>
+            <span className="text-sm md:text-base tracking-[0.3em] uppercase font-mono text-foreground/60 block mb-5">{t('contact.eyebrow')}</span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6 leading-tight">{t('contact.title1')}<br />{t('contact.title2')}</h2>
             <p className="text-foreground/70 text-lg font-light leading-relaxed mb-10 max-w-md">
-              Bạn muốn hợp tác, học hỏi hay đơn giản là kết nối? Nhắn cho mình nhé — mình luôn sẵn sàng đồng hành.
+              {t('contact.desc')}
             </p>
 
             <div className="space-y-5 mb-10">
               <a href="mailto:nguyenkynam82@gmail.com" className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group">
                 <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass hover-grow flex items-center justify-center shrink-0"><Mail size={20} /></span>
                 <span>
-                  <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Email</span>
+                  <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">{t('contact.emailLabel')}</span>
                   <span className="text-lg font-medium break-all">nguyenkynam82@gmail.com</span>
                 </span>
               </a>
@@ -42,8 +44,8 @@ export function ContactSection() {
               >
                 <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass hover-grow flex items-center justify-center shrink-0"><MapPin size={20} /></span>
                 <span>
-                  <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Địa chỉ</span>
-                  <span className="text-lg font-medium underline-offset-2 group-hover:underline">Hưng Phú, Cần Thơ, Việt Nam</span>
+                  <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">{t('contact.addressLabel')}</span>
+                  <span className="text-lg font-medium underline-offset-2 group-hover:underline">{t('contact.address')}</span>
                 </span>
               </a>
             </div>
@@ -69,14 +71,14 @@ export function ContactSection() {
             <div className="bg-[#ffffff] p-3 rounded-2xl shadow-lg mb-6">
               <img src={`${import.meta.env.BASE_URL}zalo-qr.jpg`} alt="Mã QR Zalo của kn." loading="lazy" decoding="async" className="w-44 h-44 object-contain rounded-lg" />
             </div>
-            <h3 className="text-2xl font-display font-semibold text-white mb-1">Nhắn Zalo cho mình</h3>
-            <p className="text-foreground/70 mb-6">Quét mã hoặc bấm nút bên dưới</p>
+            <h3 className="text-2xl font-display font-semibold text-white mb-1">{t('contact.zaloTitle')}</h3>
+            <p className="text-foreground/70 mb-6">{t('contact.zaloSub')}</p>
             <a
               href={ZALO} target="_blank" rel="noopener noreferrer"
               onMouseMove={glassMove}
               className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold inline-flex items-center gap-2 hover-grow"
             >
-              <MessageCircle size={18} /> Hợp tác cùng kn.
+              <MessageCircle size={18} /> {t('contact.zaloCta')}
             </a>
             <span className="text-foreground/50 text-sm font-mono mt-4">Zalo · 0789 500 902</span>
           </motion.div>

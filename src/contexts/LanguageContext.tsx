@@ -8,83 +8,161 @@ type Dictionary = {
 
 export const dictionaries: Record<Language, Dictionary> = {
   vi: {
-    'nav.about': 'Giới Thiệu',
-    'nav.projects': 'Dự Án',
-    'nav.services': 'Dịch Vụ',
-    'nav.insights': 'Góc Nhìn',
-    'nav.contact': 'Liên Hệ',
-    
-    'hero.role': 'kn. — Người trẻ kinh doanh thực chiến',
-    'hero.cta': 'Khám phá Hành trình',
+    // Navigation
+    'nav.about': 'Giới thiệu',
+    'nav.achievements': 'Thành tích',
+    'nav.certificates': 'Chứng chỉ',
+    'nav.contact': 'Liên hệ',
+    'nav.cta': 'in bóc kn. liền nhaa',
+    'nav.zalo': 'Nhắn Zalo',
 
-    'about.title': 'Bắt đầu sớm, đi thật xa',
-    'about.desc': 'Mình là Nguyễn Kỳ Nam (kn.) — người trẻ kinh doanh thực chiến, chia sẻ cách tư duy, giao tiếp tự tin và tự chủ tài chính để bạn bứt phá từ sớm.',
-    
-    'stats.experience': 'Năm Kinh Nghiệm',
-    'stats.clients': 'Khách Hàng',
-    'stats.revenue': 'Doanh Thu Tạo Ra',
-    
-    'insights.title': 'Góc Nhìn Chuyên Gia',
-    'insights.subtitle': 'Thought Leadership',
-    'insights.desc': 'Những bài viết, phân tích và case-study chuyên sâu về Data Science, AI và xu hướng công nghệ tương lai.',
-    
-    'faq.title': 'Câu Hỏi Thường Gặp',
-    'faq.desc': 'Mọi thắc mắc của bạn về quy trình hợp tác và dịch vụ.',
-    'faq.showMore': 'Xem thêm câu hỏi',
+    // Hero
+    'hero.title1': 'Ý chí dẫn đến',
+    'hero.title2': 'Thành công',
+    'hero.more': '[ Tìm hiểu thêm ]',
 
-    'contact.title': 'Đặt Lịch Tư Vấn VIP',
-    'contact.subtitle': 'Premium Booking',
-    'contact.desc': 'Bắt đầu dự án đột phá tiếp theo của bạn cùng tôi. Vui lòng để lại thông tin để thiết lập cuộc hẹn tư vấn chuyên sâu 1-1.',
-    'contact.form.name': 'Tên của bạn',
-    'contact.form.email': 'Email làm việc',
-    'contact.form.message': 'Dự án hoặc vấn đề bạn đang gặp phải...',
-    'contact.form.submit': 'Gửi Yêu Cầu Chuyên Gia',
-    'contact.form.opened': 'Đã mở email — bấm Gửi để hoàn tất!',
-    'contact.location.label': 'Địa chỉ',
-    'contact.location.value': 'Cần Thơ, Việt Nam',
+    // About
+    'about.eyebrow': 'Giới thiệu',
+    'about.greet': 'Hé lô, tui là ',
+    'about.p1a': 'Tui là Kỳ Nam — hiện là học sinh chuẩn bị lên cấp 3, đang sinh sống và học tập tại TP. Cần Thơ. Tới thời điểm này, tui đã sở hữu ',
+    'about.p1b': 'hơn 10 huy chương',
+    'about.p1c': ' ở các cự li chạy bộ như 5km, 10km và 21km.',
+    'about.p2': 'Thế mạnh của tui nằm ở khả năng truyền đạt ý tưởng, dẫn dắt đội nhóm và tư duy logic, sáng tạo trong cả công việc lẫn học tập. Bên cạnh đó, tui còn tự tin ở khả năng kết bạn và giao tiếp với mọi người.',
+    'about.cap1': 'Truyền đạt & Thuyết phục bằng ngôn từ',
+    'about.cap2': 'Khả năng tiếp thu & học hỏi nhanh nhẹn',
+    'about.cap3': 'Sáng tạo trong công việc & học tập',
+    'about.cap4': 'Thân thiện, dễ dàng kết nối các mối quan hệ xung quanh',
+    'about.location': 'Cần Thơ, Việt Nam',
 
-    'recognitions.title': 'Công Nghệ Cốt Lõi',
-    'recognitions.subtitle': 'Tech Stack'
+    // Achievements
+    'ach.eyebrow': 'Thành tích',
+    'ach.title': 'Thành tích chạy bộ',
+    'ach.desc1': 'Ba lần chinh phục cự li 21km (Half Marathon) của tui nè.',
+    'ach.desc2': 'Ấn vào từng giải để xem chi tiết hành trình nhé.',
+    'ach.viewDetail': 'Xem chi tiết →',
+    'ach.medalsPre': 'Bộ sưu tập ',
+    'ach.medalsHi': 'huy chương',
+    'ach.medalsDesc': 'Các giải 5km, 10km và trekking trên hành trình.',
+    'ach.viewStory': 'Xem câu chuyện →',
+
+    // Modal (chung cho thành tích / chứng chỉ)
+    'modal.distance': 'Cự li',
+    'modal.time': 'Thời gian',
+    'modal.date': 'Ngày',
+    'modal.location': 'Địa điểm',
+    'modal.bib': 'BIB',
+    'modal.moments': 'Khoảnh khắc & huy chương',
+    'modal.story': 'Câu chuyện',
+    'modal.storyEmpty': 'Câu chuyện sẽ được cập nhật sớm…',
+    'modal.close': 'Đóng',
+    'modal.prev': 'Ảnh trước',
+    'modal.next': 'Ảnh sau',
+    'modal.zoom': 'Phóng to ảnh',
+
+    // Certificates
+    'cert.eyebrow': 'Chứng chỉ',
+    'cert.title': 'Chứng chỉ & bằng khen',
+    'cert.desc1': 'Các chứng chỉ và bằng khen mà tui đã đạt được nè😁.',
+    'cert.desc2': 'Ấn vào để xem hành trình chinh phục của kn. nhé.',
+    'cert.viewStory': 'Xem câu chuyện →',
+
+    // Contact
+    'contact.eyebrow': 'Liên hệ',
+    'contact.title1': 'Cùng nhau',
+    'contact.title2': 'tạo giá trị.',
+    'contact.desc': 'Bạn muốn hợp tác, học hỏi hay đơn giản là kết nối? Nhắn cho mình nhé — mình luôn sẵn sàng đồng hành.',
+    'contact.emailLabel': 'Email',
+    'contact.addressLabel': 'Địa chỉ',
+    'contact.address': 'Hưng Phú, Cần Thơ, Việt Nam',
+    'contact.zaloTitle': 'Nhắn Zalo cho mình',
+    'contact.zaloSub': 'Quét mã hoặc bấm nút bên dưới',
+    'contact.zaloCta': 'Hợp tác cùng kn.',
+
+    // Footer
+    'footer.rights': 'Bản quyền đã được bảo hộ.',
+    'footer.privacy': 'Chính Sách Bảo Mật',
+    'footer.terms': 'Điều Khoản',
+    'footer.cookies': 'Cookie',
+    'footer.disclaimer': 'Miễn Trừ',
   },
   en: {
+    // Navigation
     'nav.about': 'About',
-    'nav.projects': 'Projects',
-    'nav.services': 'Services',
-    'nav.insights': 'Insights',
+    'nav.achievements': 'Achievements',
+    'nav.certificates': 'Certificates',
     'nav.contact': 'Contact',
-    
-    'hero.role': 'kn. — Young hands-on entrepreneur',
-    'hero.cta': 'Explore Journey',
+    'nav.cta': "Let's collab!",
+    'nav.zalo': 'Message Zalo',
 
-    'about.title': 'Start early, go far',
-    'about.desc': 'I am Nguyễn Kỳ Nam (kn.) — a young hands-on entrepreneur sharing mindset, confident communication, and early financial independence so you can break through sooner.',
-    
-    'stats.experience': 'Years Experience',
-    'stats.clients': 'Clients Worldwide',
-    'stats.revenue': 'Revenue Generated',
-    
-    'insights.title': 'Expert Insights',
-    'insights.subtitle': 'Thought Leadership',
-    'insights.desc': 'In-depth articles, analyses, and case studies on Data Science, AI, and future technology trends.',
-    
-    'faq.title': 'Frequently Asked Questions',
-    'faq.desc': 'Everything you need to know about our collaboration and services.',
-    'faq.showMore': 'Show more questions',
+    // Hero
+    'hero.title1': 'Willpower leads to',
+    'hero.title2': 'Success',
+    'hero.more': '[ Learn more ]',
 
-    'contact.title': 'VIP Consultation',
-    'contact.subtitle': 'Premium Booking',
-    'contact.desc': 'Start your next breakthrough project with me. Leave your information to set up an in-depth 1-on-1 consultation.',
-    'contact.form.name': 'Your Name',
-    'contact.form.email': 'Work Email',
-    'contact.form.message': 'Your project or challenge...',
-    'contact.form.submit': 'Send Expert Request',
-    'contact.form.opened': 'Email draft opened — hit Send to finish!',
-    'contact.location.label': 'Location',
-    'contact.location.value': 'Can Tho, Vietnam',
+    // About
+    'about.eyebrow': 'About',
+    'about.greet': "Hey, I'm ",
+    'about.p1a': "I'm Kỳ Nam — a student about to start high school, living and studying in Cần Thơ City. So far I've earned ",
+    'about.p1b': 'over 10 medals',
+    'about.p1c': ' across running distances like 5km, 10km and 21km.',
+    'about.p2': "My strengths lie in conveying ideas, leading teams, and thinking logically and creatively in both work and study. I'm also confident in making friends and connecting with everyone.",
+    'about.cap1': 'Communicate & persuade with words',
+    'about.cap2': 'Quick to absorb & learn',
+    'about.cap3': 'Creative in work & study',
+    'about.cap4': 'Friendly, easy to connect with people',
+    'about.location': 'Cần Thơ, Vietnam',
 
-    'recognitions.title': 'Core Technologies',
-    'recognitions.subtitle': 'Tech Stack'
-  }
+    // Achievements
+    'ach.eyebrow': 'Achievements',
+    'ach.title': 'Running achievements',
+    'ach.desc1': 'My three times conquering the 21km (Half Marathon) distance.',
+    'ach.desc2': 'Tap each race to see the full journey.',
+    'ach.viewDetail': 'View details →',
+    'ach.medalsPre': 'Medal ',
+    'ach.medalsHi': 'collection',
+    'ach.medalsDesc': '5km, 10km and trekking races along the way.',
+    'ach.viewStory': 'View story →',
+
+    // Modal
+    'modal.distance': 'Distance',
+    'modal.time': 'Time',
+    'modal.date': 'Date',
+    'modal.location': 'Location',
+    'modal.bib': 'BIB',
+    'modal.moments': 'Moments & medal',
+    'modal.story': 'Story',
+    'modal.storyEmpty': 'Story coming soon…',
+    'modal.close': 'Close',
+    'modal.prev': 'Previous image',
+    'modal.next': 'Next image',
+    'modal.zoom': 'Zoom image',
+
+    // Certificates
+    'cert.eyebrow': 'Certificates',
+    'cert.title': 'Certificates & awards',
+    'cert.desc1': "The certificates and awards I've earned 😁.",
+    'cert.desc2': "Tap to see kn.'s journey to earn them.",
+    'cert.viewStory': 'View story →',
+
+    // Contact
+    'contact.eyebrow': 'Contact',
+    'contact.title1': "Let's create",
+    'contact.title2': 'value together.',
+    'contact.desc': "Want to collaborate, learn, or simply connect? Drop me a message — I'm always ready to join you.",
+    'contact.emailLabel': 'Email',
+    'contact.addressLabel': 'Address',
+    'contact.address': 'Hưng Phú, Cần Thơ, Vietnam',
+    'contact.zaloTitle': 'Message me on Zalo',
+    'contact.zaloSub': 'Scan the code or tap below',
+    'contact.zaloCta': 'Work with kn.',
+
+    // Footer
+    'footer.rights': 'All rights reserved.',
+    'footer.privacy': 'Privacy Policy',
+    'footer.terms': 'Terms',
+    'footer.cookies': 'Cookies',
+    'footer.disclaimer': 'Disclaimer',
+  },
 };
 
 interface LanguageContextType {

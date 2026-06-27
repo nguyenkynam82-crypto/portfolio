@@ -3,6 +3,8 @@ import logoUrl from '/kn-logo.svg?url';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Magnetic } from '../ui/Magnetic';
+import { LangToggle } from '../ui/LangToggle';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { glassMove } from '../../lib/glass';
 
 const ZALO = 'https://zalo.me/0789500902';
@@ -11,6 +13,7 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -63,10 +66,10 @@ export function Navigation() {
           onMouseMove={glassMove}
           className="flex items-center gap-1 liquid-glass rounded-full px-2 py-1.5 pointer-events-auto"
         >
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Giới thiệu</a>
-          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Thành tích</a>
-          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Chứng chỉ</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">Liên hệ</a>
+          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.about')}</a>
+          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.achievements')}</a>
+          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.certificates')}</a>
+          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.contact')}</a>
         </motion.nav>
       </div>
 
@@ -75,8 +78,9 @@ export function Navigation() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-auto flex items-center gap-4 xl:gap-6 justify-self-end"
+        className="pointer-events-auto flex items-center gap-3 xl:gap-4 justify-self-end"
       >
+        <LangToggle />
         <Magnetic>
           <a
             href={ZALO}
@@ -85,7 +89,7 @@ export function Navigation() {
             onMouseMove={glassMove}
             className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0 hover-grow"
           >
-            in bóc kn. liền nhaa
+            {t('nav.cta')}
           </a>
         </Magnetic>
       </motion.div>

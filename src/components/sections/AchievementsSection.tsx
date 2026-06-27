@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Medal, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useCallback, useRef, type WheelEvent } from 'react';
 import { lockScroll, unlockScroll } from '../../lib/lenis';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -74,6 +75,7 @@ const otherMedals: MedalItem[] = [
 ];
 
 export function AchievementsSection() {
+  const { t } = useLanguage();
   const [active, setActive] = useState<number | null>(null);
   const [activeMedal, setActiveMedal] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState<{ imgs: string[]; i: number } | null>(null);
@@ -138,7 +140,7 @@ export function AchievementsSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7 }}
           className="text-sm md:text-base tracking-[0.3em] uppercase font-mono text-foreground/60 block mb-6"
         >
-          Thành tích
+          {t('ach.eyebrow')}
         </motion.span>
 
         <motion.h2
@@ -146,15 +148,15 @@ export function AchievementsSection() {
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-[1.2] flex items-center gap-3 flex-wrap"
         >
           <Medal className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#medalGrad)" aria-hidden="true" />
-          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Thành tích chạy bộ</span>
+          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">{t('ach.title')}</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="text-lg text-foreground/70 font-light max-w-2xl mb-14"
         >
-          Ba lần chinh phục cự li 21km (Half Marathon) của tui nè.<br />
-          Ấn vào từng giải để xem chi tiết hành trình nhé.
+          {t('ach.desc1')}<br />
+          {t('ach.desc2')}
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -182,7 +184,7 @@ export function AchievementsSection() {
                 <h3 className="font-display font-bold text-mask-gradient leading-snug">{ach.title}</h3>
                 <p className="font-mono text-xs text-foreground/60 mt-2">{ach.distance} · ⏱ {ach.time}</p>
                 <span className="inline-flex items-center gap-1 text-primary/70 group-hover:text-primary text-xs font-mono uppercase tracking-wider mt-4 transition-colors">
-                  Xem chi tiết →
+                  {t('ach.viewDetail')}
                 </span>
               </div>
             </motion.button>
@@ -195,13 +197,13 @@ export function AchievementsSection() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6 }}
             className="text-2xl md:text-3xl font-display font-bold text-white mb-2"
           >
-            Bộ sưu tập <span className="text-mask-gradient">huy chương</span>
+            {t('ach.medalsPre')}<span className="text-mask-gradient">{t('ach.medalsHi')}</span>
           </motion.h3>
           <motion.p
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6, delay: 0.05 }}
             className="text-foreground/60 mb-8"
           >
-            Các giải 5km, 10km và trekking trên hành trình.
+            {t('ach.medalsDesc')}
           </motion.p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {otherMedals.map((med, i) => (
@@ -227,7 +229,7 @@ export function AchievementsSection() {
                 <div className="mt-3">
                   <div className="text-white font-semibold text-sm leading-tight">{med.distance}</div>
                   <div className="text-foreground/55 text-xs mt-0.5">{med.event} · {med.year}</div>
-                  <span className="inline-block text-primary/60 group-hover:text-primary text-[10px] font-mono uppercase tracking-wider mt-1.5 transition-colors">Xem câu chuyện →</span>
+                  <span className="inline-block text-primary/60 group-hover:text-primary text-[10px] font-mono uppercase tracking-wider mt-1.5 transition-colors">{t('ach.viewStory')}</span>
                 </div>
               </motion.button>
             ))}
@@ -255,7 +257,7 @@ export function AchievementsSection() {
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                aria-label="Đóng"
+                aria-label={t('modal.close')}
                 className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB]/80 hover:text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
@@ -274,11 +276,11 @@ export function AchievementsSection() {
 
                   <dl className="grid grid-cols-2 gap-x-6 gap-y-4">
                     {[
-                      ['Cự li', a.distance],
-                      ['Thời gian', a.time],
-                      ['Ngày', a.date],
-                      ['Địa điểm', a.location],
-                      ['BIB', a.bib],
+                      [t('modal.distance'), a.distance],
+                      [t('modal.time'), a.time],
+                      [t('modal.date'), a.date],
+                      [t('modal.location'), a.location],
+                      [t('modal.bib'), a.bib],
                     ].map(([label, value]) => (
                       <div key={label}>
                         <dt className="text-[#E1FFFB]/45 text-xs font-mono uppercase tracking-wider mb-1">{label}</dt>
@@ -290,14 +292,14 @@ export function AchievementsSection() {
                   {/* Khoảnh khắc & huy chương — bấm để phóng to + lướt qua lại */}
                   {aImgs.length > 0 && (
                     <div className="mt-7 border-t border-[#E1FFFB]/15 pt-6">
-                      <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Khoảnh khắc &amp; huy chương</span>
+                      <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.moments')}</span>
                       <div className="grid grid-cols-3 gap-2">
                         {aImgs.map((img, idx) => (
                           <button
                             key={img}
                             type="button"
                             onClick={() => setLightbox({ imgs: aImgs, i: idx })}
-                            aria-label="Phóng to ảnh"
+                            aria-label={t('modal.zoom')}
                             className="group rounded-lg overflow-hidden aspect-square cursor-zoom-in"
                           >
                             <img src={`${BASE}${img}`} alt={`${a.title} — ảnh ${idx + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -308,11 +310,11 @@ export function AchievementsSection() {
                   )}
 
                   <div className="mt-7 border-t border-[#E1FFFB]/15 pt-6">
-                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
+                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {a.story ? (
                       <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{a.story}</p>
                     ) : (
-                      <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
+                      <p className="text-[#E1FFFB]/40 italic">{t('modal.storyEmpty')}</p>
                     )}
                   </div>
                 </div>
@@ -342,7 +344,7 @@ export function AchievementsSection() {
               <button
                 type="button"
                 onClick={() => setActiveMedal(null)}
-                aria-label="Đóng"
+                aria-label={t('modal.close')}
                 className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB]/80 hover:text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
@@ -360,11 +362,11 @@ export function AchievementsSection() {
                   <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{m.distance}</h3>
                   <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{m.event} · {m.year}</p>
                   <div className="border-t border-[#E1FFFB]/15 pt-6">
-                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
+                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {m.story ? (
                       <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{m.story}</p>
                     ) : (
-                      <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
+                      <p className="text-[#E1FFFB]/40 italic">{t('modal.storyEmpty')}</p>
                     )}
                   </div>
                 </div>
@@ -383,12 +385,12 @@ export function AchievementsSection() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
             onWheel={onLbWheel}
-            role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to"
+            role="dialog" aria-modal="true" aria-label={t('modal.zoom')}
           >
             <button
               type="button"
               onClick={() => setLightbox(null)}
-              aria-label="Đóng"
+              aria-label={t('modal.close')}
               className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
             >
               <X className="w-5 h-5" aria-hidden="true" />
@@ -414,7 +416,7 @@ export function AchievementsSection() {
                   type="button"
                   onClick={(e) => { e.stopPropagation(); lbPrev(); }}
                   disabled={lightbox.i === 0}
-                  aria-label="Ảnh trước"
+                  aria-label={t('modal.prev')}
                   className="w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] flex items-center justify-center transition-all enabled:hover:bg-[#E1FFFB]/20 disabled:opacity-25 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="w-5 h-5" aria-hidden="true" />
@@ -426,7 +428,7 @@ export function AchievementsSection() {
                   type="button"
                   onClick={(e) => { e.stopPropagation(); lbNext(); }}
                   disabled={lightbox.i === lightbox.imgs.length - 1}
-                  aria-label="Ảnh sau"
+                  aria-label={t('modal.next')}
                   className="w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB] flex items-center justify-center transition-all enabled:hover:bg-[#E1FFFB]/20 disabled:opacity-25 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="w-5 h-5" aria-hidden="true" />

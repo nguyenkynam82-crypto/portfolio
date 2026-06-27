@@ -2,13 +2,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GraduationCap, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { lockScroll, unlockScroll } from '../../lib/lenis';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const BASE = import.meta.env.BASE_URL;
 
 type Certificate = {
   img: string;
   title: string;
+  titleEn: string;
   desc: string;
+  descEn: string;
   /** Câu chuyện hiện ra khi bấm vào thẻ. Để trống nếu chưa có. */
   story: string;
 };
@@ -17,30 +20,39 @@ const certificates: Certificate[] = [
   {
     img: 'certs/chung-chi/a2-certificate.jpg',
     title: 'Cambridge English A2',
+    titleEn: 'Cambridge English A2',
     desc: 'Chứng chỉ Cambridge English (A2 Key) — điểm tổng 131.',
+    descEn: 'Cambridge English (A2 Key) certificate — overall score 131.',
     story: '',
   },
   {
     img: 'certs/chung-chi/ielts-midterm.jpg',
     title: 'Certificate of Honour — Học kỳ I',
+    titleEn: 'Certificate of Honour — Semester I',
     desc: 'Thành tích học tập xuất sắc lớp IELTS Mindset 1, học kỳ I (VAS · 2025–2026).',
+    descEn: 'Outstanding academic performance — IELTS Mindset 1, Semester I (VAS · 2025–2026).',
     story: '',
   },
   {
     img: 'certs/chung-chi/ielts-yearly.jpg',
     title: 'Certificate of Honour — Cả năm',
+    titleEn: 'Certificate of Honour — Full year',
     desc: 'Thành tích học tập xuất sắc lớp IELTS Mindset 1, cả năm học (VAS · 2025–2026).',
+    descEn: 'Outstanding academic performance — IELTS Mindset 1, full school year (VAS · 2025–2026).',
     story: '',
   },
   {
     img: 'certs/chung-chi/violympic.jpg',
     title: 'Violympic cấp Trường',
+    titleEn: 'Violympic — School level',
     desc: 'Hoàn thành vòng thi cấp Trường — môn Khoa học Tự nhiên khối 9 (2025–2026).',
+    descEn: 'Completed the school-level round — Natural Sciences, grade 9 (2025–2026).',
     story: '',
   },
 ];
 
 export function CertificatesSection() {
+  const { t, language } = useLanguage();
   const [active, setActive] = useState<number | null>(null);
   const cert = active !== null ? certificates[active] : null;
 
@@ -65,7 +77,7 @@ export function CertificatesSection() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7 }}
           className="text-sm md:text-base tracking-[0.3em] uppercase font-mono text-foreground/60 block mb-6"
         >
-          Chứng chỉ
+          {t('cert.eyebrow')}
         </motion.span>
 
         {/* Gradient dùng để tô nét icon nón tốt nghiệp (SVG stroke không
@@ -87,15 +99,15 @@ export function CertificatesSection() {
           <GraduationCap className="w-9 h-9 md:w-12 md:h-12 shrink-0" stroke="url(#capGrad)" aria-hidden="true" />
           {/* inline-block + leading + pb so the gradient background covers the
               full glyph, including descenders (g, y, ỉ…) — otherwise clipped. */}
-          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">Chứng chỉ &amp; bằng khen</span>
+          <span className="text-mask-gradient inline-block leading-[1.3] pb-2">{t('cert.title')}</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
           className="text-lg text-foreground/70 font-light max-w-2xl mb-14"
         >
-          Các chứng chỉ và bằng khen mà tui đã đạt được nè😁.<br />
-          Ấn vào để xem hành trình chinh phục của kn. nhé.
+          {t('cert.desc1')}<br />
+          {t('cert.desc2')}
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -122,10 +134,10 @@ export function CertificatesSection() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="font-display font-bold text-mask-gradient leading-snug">{c.title}</h3>
-                <p className="text-foreground/60 text-sm mt-1.5 leading-relaxed">{c.desc}</p>
+                <h3 className="font-display font-bold text-mask-gradient leading-snug">{language === 'en' ? c.titleEn : c.title}</h3>
+                <p className="text-foreground/60 text-sm mt-1.5 leading-relaxed">{language === 'en' ? c.descEn : c.desc}</p>
                 <span className="inline-flex items-center gap-1 text-primary/70 group-hover:text-primary text-xs font-mono uppercase tracking-wider mt-4 transition-colors">
-                  Xem câu chuyện →
+                  {t('cert.viewStory')}
                 </span>
               </div>
             </motion.button>
@@ -153,7 +165,7 @@ export function CertificatesSection() {
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                aria-label="Đóng"
+                aria-label={t('modal.close')}
                 className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#E1FFFB]/10 border border-[#E1FFFB]/25 text-[#E1FFFB]/80 hover:text-[#E1FFFB] hover:bg-[#E1FFFB]/20 flex items-center justify-center transition-colors"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
@@ -168,14 +180,14 @@ export function CertificatesSection() {
                   />
                 </div>
                 <div className="p-7 md:p-10">
-                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-3 leading-tight">{cert.title}</h3>
-                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7 leading-relaxed">{cert.desc}</p>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-3 leading-tight">{language === 'en' ? cert.titleEn : cert.title}</h3>
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7 leading-relaxed">{language === 'en' ? cert.descEn : cert.desc}</p>
                   <div className="border-t border-[#E1FFFB]/15 pt-6">
-                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">Câu chuyện</span>
+                    <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {cert.story ? (
                       <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{cert.story}</p>
                     ) : (
-                      <p className="text-[#E1FFFB]/40 italic">Câu chuyện sẽ được cập nhật sớm…</p>
+                      <p className="text-[#E1FFFB]/40 italic">{t('modal.storyEmpty')}</p>
                     )}
                   </div>
                 </div>

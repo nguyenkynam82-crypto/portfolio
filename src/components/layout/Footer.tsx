@@ -2,6 +2,7 @@ import { Mail, Heart } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import logoUrl from '/kn-logo.svg?url';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/nguyen.ky.nam.461926/', Icon: SiFacebook },
@@ -12,6 +13,7 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="relative py-16 px-6 bg-background z-20 border-t border-white/10">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
@@ -35,12 +37,12 @@ export function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Nguyễn Kỳ Nam (kn.). Bản quyền đã được bảo hộ.</p>
+        <p>&copy; {new Date().getFullYear()} Nguyễn Kỳ Nam (kn.). {t('footer.rights')}</p>
         <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-          <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Chính Sách Bảo Mật</Link>
-          <Link to="/terms-of-service" className="hover:text-foreground transition-colors">Điều Khoản</Link>
-          <Link to="/cookies-policy" className="hover:text-foreground transition-colors">Cookie</Link>
-          <Link to="/disclaimer" className="hover:text-foreground transition-colors">Miễn Trừ</Link>
+          <Link to="/privacy-policy" className="hover:text-foreground transition-colors">{t('footer.privacy')}</Link>
+          <Link to="/terms-of-service" className="hover:text-foreground transition-colors">{t('footer.terms')}</Link>
+          <Link to="/cookies-policy" className="hover:text-foreground transition-colors">{t('footer.cookies')}</Link>
+          <Link to="/disclaimer" className="hover:text-foreground transition-colors">{t('footer.disclaimer')}</Link>
         </div>
       </div>
     </footer>

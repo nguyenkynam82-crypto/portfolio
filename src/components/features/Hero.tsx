@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Hero() {
+  const { t, language } = useLanguage();
+  const isEn = language === 'en';
   return (
     <section className="relative min-h-[100svh] w-full bg-black overflow-hidden flex flex-col justify-start px-6 md:px-12 lg:px-20 pt-20 pb-32">
       {/* Ambient Depth Background */}
@@ -17,8 +20,8 @@ export function Hero() {
           <h1 data-cursor-dark className="font-heading font-black uppercase tracking-tight">
             {/* Font Saira + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG" to + gradient.
                 Saira render dấu Ẫ chuẩn (lúc trước thấy hỏng là do cache font cũ). */}
-            <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem] text-white leading-[1.05]">Ý chí dẫn đến</span>
-            <span className="text-mask-gradient inline-block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-[1.1] py-2">Thành công</span>
+            <span className={`block ${isEn ? 'text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[8.5rem]' : 'text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]'} text-white leading-[1.05]`}>{t('hero.title1')}</span>
+            <span className="text-mask-gradient inline-block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-[1.1] py-2">{t('hero.title2')}</span>
           </h1>
         </motion.div>
       </div>
@@ -36,7 +39,7 @@ export function Hero() {
             className="font-mono text-[10px] md:text-xs text-foreground/70 hover:text-white transition-all border border-white/20 px-5 py-2.5 rounded-none hover:bg-white/10 tracking-widest uppercase relative group overflow-hidden"
           >
             <div className="absolute inset-0 w-full h-full bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-            <span className="relative z-10">[ Tìm hiểu thêm ]</span>
+            <span className="relative z-10">{t('hero.more')}</span>
           </button>
         </motion.div>
       </div>
