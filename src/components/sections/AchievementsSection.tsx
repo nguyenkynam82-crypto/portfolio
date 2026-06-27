@@ -63,15 +63,16 @@ const achievements: Achievement[] = [
 
 // Huy chương các giải 5km / 10km / trekking (không phải 21km) — bộ sưu tập.
 // story: câu chuyện hiện khi bấm vào, để '' nếu chưa có.
-type MedalItem = { img: string; distance: string; event: string; year: string; story: string };
+// date / location: để trống ('') — chủ web tự điền sau, modal sẽ hiện '—'.
+type MedalItem = { img: string; distance: string; event: string; year: string; date: string; location: string; story: string };
 const otherMedals: MedalItem[] = [
-  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2022', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2023', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2024', story: '' },
-  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Mekong Delta Marathon Hau Giang', year: '2024', story: '' },
-  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress Marathon Cần Thơ', year: '2025', story: '' },
-  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', story: '' },
-  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2022', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2023', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2024', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Mekong Delta Marathon Hau Giang', year: '2024', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress Marathon Cần Thơ', year: '2025', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', date: '', location: '', story: '' },
 ];
 
 // Bản tiếng Anh: "x km" → "xK"; tên riêng VN viết liền + bỏ dấu.
@@ -369,8 +370,22 @@ export function AchievementsSection() {
                 </div>
                 <div className="p-7 md:p-10">
                   <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{isEn ? enName(m.event) : m.event}</h3>
-                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{isEn ? enDist(m.distance) : m.distance} · {m.year}</p>
-                  <div className="border-t border-[#E1FFFB]/15 pt-6">
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{m.year}</p>
+
+                  <dl className="grid grid-cols-2 gap-x-6 gap-y-4">
+                    {[
+                      [t('modal.distance'), isEn ? enDist(m.distance) : m.distance],
+                      [t('modal.date'), m.date],
+                      [t('modal.location'), isEn ? enName(m.location) : m.location],
+                    ].map(([label, value]) => (
+                      <div key={label}>
+                        <dt className="text-[#E1FFFB]/45 text-xs font-mono uppercase tracking-wider mb-1">{label}</dt>
+                        <dd className="text-[#E1FFFB]/90 text-base font-medium">{value || '—'}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <div className="mt-7 border-t border-[#E1FFFB]/15 pt-6">
                     <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {m.story ? (
                       <p className="text-[#E1FFFB]/85 leading-relaxed whitespace-pre-line">{m.story}</p>

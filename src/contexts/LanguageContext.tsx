@@ -47,9 +47,9 @@ export const dictionaries: Record<Language, Dictionary> = {
 
     // Modal (chung cho thành tích / chứng chỉ)
     'modal.distance': 'Cự li',
-    'modal.time': 'Thời gian',
-    'modal.date': 'Ngày',
-    'modal.location': 'Địa điểm',
+    'modal.time': 'Thời gian hoàn thành',
+    'modal.date': 'Ngày diễn ra',
+    'modal.location': 'Địa điểm diễn ra',
     'modal.bib': 'BIB',
     'modal.moments': 'Khoảnh khắc & huy chương',
     'modal.story': 'Câu chuyện',
@@ -125,9 +125,9 @@ export const dictionaries: Record<Language, Dictionary> = {
 
     // Modal
     'modal.distance': 'Distance',
-    'modal.time': 'Time',
-    'modal.date': 'Date',
-    'modal.location': 'Location',
+    'modal.time': 'Finish time',
+    'modal.date': 'Event date',
+    'modal.location': 'Event location',
     'modal.bib': 'BIB',
     'modal.moments': 'Moments & medal',
     'modal.story': 'Story',
