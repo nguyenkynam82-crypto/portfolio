@@ -147,9 +147,10 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
-/* ── Con trỏ tuỳ biến kiểu donquaan: vòng tròn chạy theo con trỏ có độ trễ.
-      Viền navy (cho nền sáng) + quầng xanh nhạt hai phía (cho nền/chữ navy)
-      → luôn nhìn thấy trên MỌI nền, không cần đánh dấu từng chỗ. ── */
+/* ── Con trỏ tuỳ biến kiểu donquaan: một vòng tròn mảnh chạy theo con trỏ có
+      độ trễ. mix-blend-mode: difference → vòng TỰ ĐẢO MÀU theo nền ngay tại
+      điểm tiếp xúc: phần nằm trên vùng tối → sáng, phần trên nền sáng → tối.
+      Chỉ đổi cục bộ ở chỗ lia tới, không đổi cả vòng. ── */
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
@@ -164,22 +165,18 @@ input:focus-visible,
   will-change: transform;
   width: 40px;
   height: 40px;
-  border: 2px solid rgba(6, 9, 53, 0.55); /* viền navy — nổi trên nền sáng */
-  /* Quầng xanh nhạt sát viền (trong + ngoài) — chỉ lộ ra khi nền/chữ là navy */
-  box-shadow:
-    0 0 0 1.5px rgba(225, 255, 251, 0.6),
-    inset 0 0 0 1.5px rgba(225, 255, 251, 0.5);
+  border: 2px solid #ffffff;
+  background: transparent;
+  mix-blend-mode: difference;
   z-index: 99999;
-  transition: opacity 0.3s ease, width 0.28s ease, height 0.28s ease,
-    background-color 0.28s ease, border-color 0.28s ease;
+  transition: opacity 0.3s ease, width 0.28s ease, height 0.28s ease;
 }
 .cursor-ring.is-visible { opacity: 1; }
 
-/* Rê vào nút/link: vòng nở to + đổ nền nhạt */
+/* Rê vào nút/link: vòng nở to (vẫn là vòng mảnh, không đổ nền) */
 .cursor-ring.is-hover {
   width: 66px;
   height: 66px;
-  background: rgba(6, 9, 53, 0.10);
 }
 
 @media (pointer: coarse) {
