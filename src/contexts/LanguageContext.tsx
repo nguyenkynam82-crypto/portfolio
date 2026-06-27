@@ -101,11 +101,11 @@ export const dictionaries: Record<Language, Dictionary> = {
 
     // About
     'about.eyebrow': 'About',
-    'about.greet': "Hey, I'm ",
-    'about.p1a': "I'm Kỳ Nam — a student about to start high school, living and studying in Cần Thơ City. So far I've earned ",
-    'about.p1b': 'over 10 medals',
-    'about.p1c': ' across running distances like 5km, 10km and 21km.',
-    'about.p2': "My strengths lie in conveying ideas, leading teams, and thinking logically and creatively in both work and study. I'm also confident in making friends and connecting with everyone.",
+    'about.greet': "Hi, I'm ",
+    'about.p1a': "I'm Ky Nam — a soon-to-be high schooler living & studying in Cần Thơ rn. Ngl, I've already racked up ",
+    'about.p1b': '10+ medals',
+    'about.p1c': ' from running 5K, 10K & 21K races.',
+    'about.p2': "My strong suits? Tbh it's getting ideas across, leading a team, and thinking logically + creatively whether it's work or school. I'm also a total people person — making friends & clicking with pretty much anyone comes super easy.",
     'about.cap1': 'Communicate & persuade with words',
     'about.cap2': 'Quick to absorb & learn',
     'about.cap3': 'Creative in work & study',
