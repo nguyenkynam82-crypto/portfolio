@@ -14,7 +14,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="self-start relative pb-4"
         >
-          <h1 className="font-heading font-black uppercase tracking-tight">
+          <h1 data-cursor-dark className="font-heading font-black uppercase tracking-tight">
             {/* Font Saira + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG" to + gradient.
                 Saira render dấu Ẫ chuẩn (lúc trước thấy hỏng là do cache font cũ). */}
             <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] xl:text-[9rem] text-white leading-[1.05]">Ý chí dẫn đến</span>

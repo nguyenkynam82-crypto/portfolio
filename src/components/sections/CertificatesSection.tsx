@@ -140,6 +140,7 @@ export function CertificatesSection() {
           >
             <motion.div
               data-lenis-prevent
+              data-cursor-dark
               className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}

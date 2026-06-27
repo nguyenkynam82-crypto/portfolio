@@ -147,13 +147,12 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
-/* ── Con trỏ tuỳ biến kiểu donquaan: chấm navy bám sát + vòng tròn chạy theo
-      có độ trễ; vòng nở to khi rê vào nút. Trên nền navy đổi sang xanh nhạt. ── */
+/* ── Con trỏ tuỳ biến kiểu donquaan: chỉ còn vòng tròn navy chạy theo có độ
+      trễ; vòng nở to khi rê vào nút. Trên nền/chữ navy đổi sang xanh nhạt. ── */
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
 }
-.cursor-dot,
 .cursor-ring {
   position: fixed;
   top: 0;
@@ -162,15 +161,6 @@ input:focus-visible,
   pointer-events: none;
   opacity: 0;
   will-change: transform;
-}
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: #060935; /* navy */
-  z-index: 100000;
-  transition: opacity 0.3s ease, background-color 0.25s ease, width 0.2s ease, height 0.2s ease;
-}
-.cursor-ring {
   width: 40px;
   height: 40px;
   border: 2px solid rgba(6, 9, 53, 0.45); /* vòng navy */
@@ -178,28 +168,27 @@ input:focus-visible,
   transition: opacity 0.3s ease, width 0.28s ease, height 0.28s ease,
     background-color 0.28s ease, border-color 0.28s ease;
 }
-.cursor-dot.is-visible,
 .cursor-ring.is-visible { opacity: 1; }
 
-/* Rê vào nút/link: vòng nở to + đổ nền nhạt; chấm thu nhỏ */
+/* Rê vào nút/link: vòng nở to + đổ nền nhạt */
 .cursor-ring.is-hover {
   width: 66px;
   height: 66px;
   background: rgba(6, 9, 53, 0.12);
   border-color: rgba(6, 9, 53, 0.5);
 }
-.cursor-dot.is-hover { width: 6px; height: 6px; }
 
-/* Trên nền/nút navy (cùng màu) → đổi sang xanh nhạt = màu nền của web */
-.cursor-dot.is-on-dark { background: #E1FFFB; }
-.cursor-ring.is-on-dark { border-color: rgba(225, 255, 251, 0.65); }
+/* Trên nền/nút/chữ navy (cùng màu) → đổi sang xanh nhạt = màu nền của web */
+.cursor-ring.is-on-dark {
+  border-color: rgba(225, 255, 251, 0.85);
+  background: rgba(225, 255, 251, 0.10);
+}
 .cursor-ring.is-on-dark.is-hover {
-  background: rgba(225, 255, 251, 0.16);
-  border-color: rgba(225, 255, 251, 0.8);
+  background: rgba(225, 255, 251, 0.18);
+  border-color: rgba(225, 255, 251, 0.95);
 }
 
 @media (pointer: coarse) {
-  .cursor-dot,
   .cursor-ring { display: none; }
 }
 

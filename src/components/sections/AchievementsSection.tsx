@@ -237,6 +237,7 @@ export function AchievementsSection() {
           >
             <motion.div
               data-lenis-prevent
+              data-cursor-dark
               className="relative z-10 w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -323,6 +324,7 @@ export function AchievementsSection() {
           >
             <motion.div
               data-lenis-prevent
+              data-cursor-dark
               className="relative z-10 w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-[#0b0b14] border border-white/10 rounded-2xl shadow-2xl"
               initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -367,6 +369,7 @@ export function AchievementsSection() {
       <AnimatePresence>
         {lightbox && (
           <motion.div
+            data-cursor-dark
             className="fixed inset-0 z-[90] flex items-center justify-center p-4 md:p-8 bg-[#060935]/92 backdrop-blur-sm"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
