@@ -26,7 +26,7 @@ export function Footer() {
           {socials.map(({ label, href, Icon }) => (
             <a
               key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-              className="w-11 h-11 rounded-full bg-white/5 hover:bg-white/15 text-white transition-all hover:-translate-y-1 flex items-center justify-center"
+              className="w-11 h-11 rounded-full bg-white/5 hover:bg-white/15 text-white hover-grow flex items-center justify-center"
             >
               <Icon aria-hidden="true" focusable="false" className="w-5 h-5" />
             </a>

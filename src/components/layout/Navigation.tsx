@@ -83,7 +83,7 @@ export function Navigation() {
             target="_blank"
             rel="noopener noreferrer"
             onMouseMove={glassMove}
-            className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0"
+            className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0 hover-grow"
           >
             in bóc kn. liền nhaa
           </a>

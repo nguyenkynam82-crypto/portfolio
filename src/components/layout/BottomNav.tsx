@@ -18,7 +18,7 @@ export function BottomNav() {
         target="_blank"
         rel="noopener noreferrer"
         onMouseMove={glassMove}
-        className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium whitespace-nowrap"
+        className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium whitespace-nowrap hover-grow"
       >
         Nhắn Zalo
       </a>

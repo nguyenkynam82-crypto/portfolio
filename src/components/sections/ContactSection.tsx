@@ -28,7 +28,7 @@ export function ContactSection() {
 
             <div className="space-y-5 mb-10">
               <a href="mailto:nguyenkynam82@gmail.com" className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group">
-                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass flex items-center justify-center shrink-0"><Mail size={20} /></span>
+                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass hover-grow flex items-center justify-center shrink-0"><Mail size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Email</span>
                   <span className="text-lg font-medium break-all">nguyenkynam82@gmail.com</span>
@@ -40,7 +40,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-white/80 hover:text-white transition-colors group"
               >
-                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass flex items-center justify-center shrink-0"><MapPin size={20} /></span>
+                <span onMouseMove={glassMove} className="w-12 h-12 rounded-full liquid-glass hover-grow flex items-center justify-center shrink-0"><MapPin size={20} /></span>
                 <span>
                   <span className="block text-xs font-mono text-foreground/50 mb-0.5 uppercase tracking-wider">Địa chỉ</span>
                   <span className="text-lg font-medium underline-offset-2 group-hover:underline">Hưng Phú, Cần Thơ, Việt Nam</span>
@@ -53,7 +53,7 @@ export function ContactSection() {
                 <a
                   key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   onMouseMove={glassMove}
-                  className="w-12 h-12 rounded-full liquid-glass text-white hover:-translate-y-1 transition-transform flex items-center justify-center"
+                  className="w-12 h-12 rounded-full liquid-glass text-white hover-grow flex items-center justify-center"
                 >
                   <Icon aria-hidden="true" className="w-5 h-5" />
                 </a>
@@ -74,7 +74,7 @@ export function ContactSection() {
             <a
               href={ZALO} target="_blank" rel="noopener noreferrer"
               onMouseMove={glassMove}
-              className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold inline-flex items-center gap-2"
+              className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold inline-flex items-center gap-2 hover-grow"
             >
               <MessageCircle size={18} /> Hợp tác cùng kn.
             </a>

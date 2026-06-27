@@ -112,7 +112,7 @@ export function MusicPlayer() {
             onClick={toggle}
             disabled={!ready}
             aria-label={playing ? 'Tạm dừng nhạc' : 'Phát nhạc'}
-            className="w-11 h-11 rounded-full bg-black/10 text-black flex items-center justify-center hover:bg-black/20 transition-colors disabled:opacity-40 shrink-0 relative"
+            className="w-11 h-11 rounded-full bg-black/10 text-black flex items-center justify-center hover:bg-black/20 hover-grow disabled:opacity-40 shrink-0 relative"
           >
             {playing ? <Pause className="w-5 h-5" /> : <Music2 className="w-5 h-5" />}
             {playing && <span className="absolute inset-0 rounded-full border-2 border-black/30 animate-ping" />}
@@ -135,7 +135,7 @@ export function MusicPlayer() {
                   type="button"
                   onClick={next}
                   aria-label="Bài tiếp theo"
-                  className="w-8 h-8 rounded-full text-black hover:bg-black/10 flex items-center justify-center shrink-0"
+                  className="w-8 h-8 rounded-full text-black hover:bg-black/10 hover-grow flex items-center justify-center shrink-0"
                 >
                   <SkipForward className="w-4 h-4" />
                 </button>
@@ -150,7 +150,7 @@ export function MusicPlayer() {
               onClick={() => setShowVol((s) => !s)}
               aria-label="Âm lượng nhạc"
               aria-expanded={showVol}
-              className="w-9 h-9 rounded-full text-black hover:bg-black/10 flex items-center justify-center"
+              className="w-9 h-9 rounded-full text-black hover:bg-black/10 hover-grow flex items-center justify-center"
             >
               {volume === 0 ? <VolumeX className="w-4 h-4" /> : volume < 50 ? <Volume1 className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>

@@ -147,6 +147,17 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
+/* Phóng to khi rê chuột vào (nút/icon/đường dẫn) — tự thu lại khi rời chuột.
+   Transition gồm cả các thuộc tính của liquid-glass để không mất hiệu ứng kính. */
+.hover-grow {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.45s ease, box-shadow 0.45s ease, filter 0.4s ease;
+  will-change: transform;
+}
+.hover-grow:hover {
+  transform: scale(1.18);
+}
+
 /* ── Con trỏ tuỳ biến kiểu donquaan: một chấm tròn đặc chạy theo con trỏ có
       độ trễ. mix-blend-mode: difference → chấm TỰ ĐẢO MÀU theo nền ngay tại
       điểm tiếp xúc: phần nằm trên vùng tối → sáng, phần trên nền sáng → tối.
