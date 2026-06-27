@@ -95,8 +95,8 @@ export const dictionaries: Record<Language, Dictionary> = {
     'nav.zalo': 'Message Zalo',
 
     // Hero
-    'hero.title1': 'Willpower leads to',
-    'hero.title2': 'Success',
+    'hero.title1': 'Where there is a will,',
+    'hero.title2': 'there is a way',
     'hero.more': '[ Learn more ]',
 
     // About
