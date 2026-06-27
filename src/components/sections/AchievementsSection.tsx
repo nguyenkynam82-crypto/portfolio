@@ -74,8 +74,17 @@ const otherMedals: MedalItem[] = [
   { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', story: '' },
 ];
 
+// Bản tiếng Anh: "x km" → "xK"; tên riêng VN viết liền + bỏ dấu.
+const enDist = (s: string) => s.replace(/\s*km/gi, 'K');
+const enName = (s: string) => s
+  .replace(/Cần Thơ/g, 'Cantho')
+  .replace(/Vĩnh Long/g, 'Vinhlong')
+  .replace(/Hà Nội/g, 'Hanoi')
+  .replace(/Hau Giang/g, 'Haugiang');
+
 export function AchievementsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isEn = language === 'en';
   const [active, setActive] = useState<number | null>(null);
   const [activeMedal, setActiveMedal] = useState<number | null>(null);
   const [lightbox, setLightbox] = useState<{ imgs: string[]; i: number } | null>(null);
@@ -181,8 +190,8 @@ export function AchievementsSection() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="font-display font-bold text-mask-gradient leading-snug">{ach.title}</h3>
-                <p className="font-mono text-xs text-foreground/60 mt-2">{ach.distance} · ⏱ {ach.time}</p>
+                <h3 className="font-display font-bold text-mask-gradient leading-snug">{isEn ? enName(ach.title) : ach.title}</h3>
+                <p className="font-mono text-xs text-foreground/60 mt-2">{isEn ? enDist(ach.distance) : ach.distance} · ⏱ {ach.time}</p>
                 <span className="inline-flex items-center gap-1 text-primary/70 group-hover:text-primary text-xs font-mono uppercase tracking-wider mt-4 transition-colors">
                   {t('ach.viewDetail')}
                 </span>
@@ -227,8 +236,8 @@ export function AchievementsSection() {
                   />
                 </div>
                 <div className="mt-3">
-                  <div className="text-white font-semibold text-sm leading-tight">{med.distance}</div>
-                  <div className="text-foreground/55 text-xs mt-0.5">{med.event} · {med.year}</div>
+                  <div className="text-white font-semibold text-sm leading-tight">{isEn ? enDist(med.distance) : med.distance}</div>
+                  <div className="text-foreground/55 text-xs mt-0.5">{isEn ? enName(med.event) : med.event} · {med.year}</div>
                   <span className="inline-block text-primary/60 group-hover:text-primary text-[10px] font-mono uppercase tracking-wider mt-1.5 transition-colors">{t('ach.viewStory')}</span>
                 </div>
               </motion.button>
@@ -272,14 +281,14 @@ export function AchievementsSection() {
                   />
                 </div>
                 <div className="p-7 md:p-10">
-                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-5 leading-tight">{a.title}</h3>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-5 leading-tight">{isEn ? enName(a.title) : a.title}</h3>
 
                   <dl className="grid grid-cols-2 gap-x-6 gap-y-4">
                     {[
-                      [t('modal.distance'), a.distance],
+                      [t('modal.distance'), isEn ? enDist(a.distance) : a.distance],
                       [t('modal.time'), a.time],
                       [t('modal.date'), a.date],
-                      [t('modal.location'), a.location],
+                      [t('modal.location'), isEn ? enName(a.location) : a.location],
                       [t('modal.bib'), a.bib],
                     ].map(([label, value]) => (
                       <div key={label}>
@@ -359,8 +368,8 @@ export function AchievementsSection() {
                   />
                 </div>
                 <div className="p-7 md:p-10">
-                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{m.distance}</h3>
-                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{m.event} · {m.year}</p>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{isEn ? enDist(m.distance) : m.distance}</h3>
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{isEn ? enName(m.event) : m.event} · {m.year}</p>
                   <div className="border-t border-[#E1FFFB]/15 pt-6">
                     <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {m.story ? (
