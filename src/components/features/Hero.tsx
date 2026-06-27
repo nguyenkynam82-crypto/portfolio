@@ -6,8 +6,8 @@ export function Hero() {
       {/* Ambient Depth Background */}
       <div className="absolute inset-0 pointer-events-none z-0 ambient-glow" />
 
-      {/* Hero Content */}
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col mt-[12vh] md:mt-[16vh]">
+      {/* Hero Content — áp sát mép trái (bỏ max-w/mx-auto) và sát lên trên */}
+      <div className="relative z-10 w-full flex flex-col mt-2 md:mt-4">
         <motion.div
           initial={{ clipPath: 'polygon(0 120%, 100% 120%, 100% 120%, 0% 120%)', y: 60 }}
           animate={{ clipPath: 'polygon(0 -20%, 100% -20%, 100% 120%, 0% 120%)', y: 0 }}
@@ -17,8 +17,8 @@ export function Hero() {
           <h1 data-cursor-dark className="font-heading font-black uppercase tracking-tight">
             {/* Font Saira + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG" to + gradient.
                 Saira render dấu Ẫ chuẩn (lúc trước thấy hỏng là do cache font cũ). */}
-            <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] xl:text-[9rem] text-white leading-[1.05]">Ý chí dẫn đến</span>
-            <span className="text-mask-gradient inline-block text-6xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[10rem] leading-[1.1] py-2">Thành công</span>
+            <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem] text-white leading-[1.05]">Ý chí dẫn đến</span>
+            <span className="text-mask-gradient inline-block text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] leading-[1.1] py-2">Thành công</span>
           </h1>
         </motion.div>
       </div>
