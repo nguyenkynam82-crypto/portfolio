@@ -115,7 +115,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     // Achievements
     'ach.eyebrow': 'Achievements',
     'ach.title': 'Running achievements',
-    'ach.desc1': '3 times I conquered the 21km (Half Marathon) distance 😁.',
+    'ach.desc1': '3 times I conquered the 21K (Half Marathon) distance 😁.',
     'ach.desc2': 'Tap any race to check out the full journey.',
     'ach.viewDetail': 'View details →',
     'ach.medalsPre': 'Medal ',
