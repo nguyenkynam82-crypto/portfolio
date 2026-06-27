@@ -37,7 +37,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     // Achievements
     'ach.eyebrow': 'Thành tích',
     'ach.title': 'Thành tích chạy bộ',
-    'ach.desc1': 'Ba lần chinh phục cự li 21km (Half Marathon) của tui nè.',
+    'ach.desc1': '3 lần chinh phục cự li 21km (Half Marathon) của tui nè😁.',
     'ach.desc2': 'Ấn vào từng giải để xem chi tiết hành trình nhé.',
     'ach.viewDetail': 'Xem chi tiết →',
     'ach.medalsPre': 'Bộ sưu tập ',
@@ -115,7 +115,7 @@ export const dictionaries: Record<Language, Dictionary> = {
     // Achievements
     'ach.eyebrow': 'Achievements',
     'ach.title': 'Running achievements',
-    'ach.desc1': 'My three times conquering the 21km (Half Marathon) distance.',
+    'ach.desc1': 'My 3 times conquering the 21km (Half Marathon) distance 😁.',
     'ach.desc2': 'Tap each race to see the full journey.',
     'ach.viewDetail': 'View details →',
     'ach.medalsPre': 'Medal ',
