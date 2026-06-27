@@ -5,6 +5,7 @@ const INTERACTIVE = 'a, button, input, textarea, select, label, summary, [role="
 export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
+  const [onImage, setOnImage] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,8 @@ export function CustomCursor() {
     const onOver = (e: MouseEvent) => {
       const t = e.target as Element;
       setHover(!!t?.closest?.(INTERACTIVE));
+      // Rê vào ảnh → chuyển thành ring rỗng để không che ảnh.
+      setOnImage(!!t?.closest?.('img, picture, video, [data-cursor="ring"]'));
     };
     const onEnter = () => setVisible(true);
     const onLeave = () => setVisible(false);
@@ -61,7 +64,8 @@ export function CustomCursor() {
     if (!el) return;
     el.classList.toggle('is-visible', visible);
     el.classList.toggle('is-hover', hover);
-  }, [visible, hover]);
+    el.classList.toggle('is-ring', onImage);
+  }, [visible, hover, onImage]);
 
   return null;
 }
