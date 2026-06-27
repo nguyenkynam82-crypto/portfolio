@@ -236,8 +236,8 @@ export function AchievementsSection() {
                   />
                 </div>
                 <div className="mt-3">
-                  <div className="text-white font-semibold text-sm leading-tight">{isEn ? enDist(med.distance) : med.distance}</div>
-                  <div className="text-foreground/55 text-xs mt-0.5">{isEn ? enName(med.event) : med.event} · {med.year}</div>
+                  <div className="text-white font-semibold text-sm leading-tight">{isEn ? enName(med.event) : med.event}</div>
+                  <div className="text-foreground/55 text-xs mt-0.5">{isEn ? enDist(med.distance) : med.distance} · {med.year}</div>
                   <span className="inline-block text-primary/60 group-hover:text-primary text-[10px] font-mono uppercase tracking-wider mt-1.5 transition-colors">{t('ach.viewStory')}</span>
                 </div>
               </motion.button>
@@ -368,8 +368,8 @@ export function AchievementsSection() {
                   />
                 </div>
                 <div className="p-7 md:p-10">
-                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{isEn ? enDist(m.distance) : m.distance}</h3>
-                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{isEn ? enName(m.event) : m.event} · {m.year}</p>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-light mb-2 leading-tight">{isEn ? enName(m.event) : m.event}</h3>
+                  <p className="text-[#E1FFFB]/65 text-sm md:text-base mb-7">{isEn ? enDist(m.distance) : m.distance} · {m.year}</p>
                   <div className="border-t border-[#E1FFFB]/15 pt-6">
                     <span className="block text-xs font-mono uppercase tracking-[0.2em] text-[#E1FFFB]/45 mb-3">{t('modal.story')}</span>
                     {m.story ? (
