@@ -163,8 +163,8 @@ input:focus-visible,
   pointer-events: none;
   opacity: 0;
   will-change: transform;
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border: none;
   background: #ffffff; /* chấm tròn đặc, lấp đầy */
   mix-blend-mode: difference;
@@ -175,8 +175,8 @@ input:focus-visible,
 
 /* Rê vào nút/link: chấm nở to */
 .cursor-ring.is-hover {
-  width: 66px;
-  height: 66px;
+  width: 88px;
+  height: 88px;
 }
 
 @media (pointer: coarse) {
