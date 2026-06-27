@@ -1,5 +1,5 @@
-import { Mail } from 'lucide-react';
-import { SiFacebook, SiInstagram, SiTiktok, SiGithub, SiSpotify } from 'react-icons/si';
+import { Mail, Camera } from 'lucide-react';
+import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import logoUrl from '/kn-logo.svg?url';
 
@@ -7,7 +7,7 @@ const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/nguyen.ky.nam.461926/', Icon: SiFacebook },
   { label: 'Instagram', href: 'https://www.instagram.com/sweatheart_3110/', Icon: SiInstagram },
   { label: 'TikTok', href: 'https://www.tiktok.com/@kn.ng211', Icon: SiTiktok },
-  { label: 'GitHub', href: 'https://github.com/nguyenkynam82-crypto/CV', Icon: SiGithub },
+  { label: 'Locket', href: 'https://locket.camera/links/FjwhKP5wLC1Bs9rc7', Icon: Camera },
   { label: 'Spotify', href: 'https://open.spotify.com/user/314i5ugiwnduiau7ckqlyc3eadei', Icon: SiSpotify },
 ];
 
