@@ -104,8 +104,12 @@ export function CertificatesSection() {
               key={c.title}
               type="button"
               onClick={() => setActive(i)}
-              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group text-left rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-pointer"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08 } }}
+              viewport={{ once: true, margin: '-40px' }}
+              whileHover={{ scale: 1.07 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="group text-left rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-pointer relative hover:z-10"
             >
               {/* White frame so each certificate's own white margins blend in —
                   keeps every card visually aligned regardless of source crop. */}

@@ -162,8 +162,12 @@ export function AchievementsSection() {
               key={ach.title}
               type="button"
               onClick={() => setActive(i)}
-              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group text-left rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-pointer"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08 } }}
+              viewport={{ once: true, margin: '-40px' }}
+              whileHover={{ scale: 1.07 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="group text-left rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors cursor-pointer relative hover:z-10"
             >
               <div className="aspect-[3/4] bg-[#ffffff] flex items-center justify-center overflow-hidden">
                 <img
@@ -204,8 +208,12 @@ export function AchievementsSection() {
                 key={med.img}
                 type="button"
                 onClick={() => setActiveMedal(i)}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.45, delay: (i % 4) * 0.06 }}
-                className="group block w-full text-center cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0, transition: { duration: 0.45, delay: (i % 4) * 0.06 } }}
+                viewport={{ once: true, margin: '-30px' }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="group block w-full text-center cursor-pointer relative hover:z-10"
               >
                 <div className="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
                   <img
