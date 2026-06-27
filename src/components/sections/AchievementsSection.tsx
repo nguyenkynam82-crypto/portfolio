@@ -63,16 +63,17 @@ const achievements: Achievement[] = [
 
 // Huy chương các giải 5km / 10km / trekking (không phải 21km) — bộ sưu tập.
 // story: câu chuyện hiện khi bấm vào, để '' nếu chưa có.
-// date / location: để trống ('') — chủ web tự điền sau, modal sẽ hiện '—'.
-type MedalItem = { img: string; distance: string; event: string; year: string; date: string; location: string; story: string };
+// date: để trống ('') — chủ web tự điền sau, modal hiện '—'. location: tiếng Việt;
+// locationEn: bản tiếng Anh (không dấu) hiện khi đang ở chế độ EN.
+type MedalItem = { img: string; distance: string; event: string; year: string; date: string; location: string; locationEn: string; story: string };
 const otherMedals: MedalItem[] = [
-  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2022', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2023', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2024', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Mekong Delta Marathon Hau Giang', year: '2024', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress Marathon Cần Thơ', year: '2025', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', date: '', location: '', story: '' },
-  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', date: '', location: '', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2022-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2022', date: '', location: 'Cần Thơ', locationEn: 'Cantho', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2023-10km.jpg', distance: '10 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2023', date: '', location: 'Cần Thơ', locationEn: 'Cantho', story: '' },
+  { img: 'thanh-tich/huy-chuong/disan-ct-2024-5km.jpg', distance: '5 km', event: 'Cần Thơ Marathon — Heritage Race', year: '2024', date: '', location: 'Cần Thơ', locationEn: 'Cantho', story: '' },
+  { img: 'thanh-tich/huy-chuong/haugiang-2024-5km.jpg', distance: '5 km', event: 'Mekong Delta Marathon Hau Giang', year: '2024', date: '', location: 'Cần Thơ (Hậu Giang cũ)', locationEn: 'Cantho (formerly Hau Giang)', story: '' },
+  { img: 'thanh-tich/huy-chuong/vnexpress-2025-5km.jpg', distance: '5 km', event: 'VnExpress Marathon Cần Thơ', year: '2025', date: '', location: 'Cần Thơ', locationEn: 'Cantho', story: '' },
+  { img: 'thanh-tich/huy-chuong/trekking-sano-2025.jpg', distance: 'Trekking', event: 'SaNo', year: '2025', date: '', location: 'Núi Ma Thiên Lãnh, Hòn Sơn, An Giang (Kiên Giang cũ)', locationEn: 'Ma Thien Lanh Mountain, Hon Son, An Giang (formerly Kien Giang)', story: '' },
+  { img: 'thanh-tich/huy-chuong/ueh-2026-10km.jpg', distance: '10 km', event: 'Vĩnh Long Marathon', year: '2026', date: '', location: 'Vĩnh Long', locationEn: 'Vinhlong', story: '' },
 ];
 
 // Bản tiếng Anh: "x km" → "xK"; tên riêng VN viết liền + bỏ dấu.
@@ -376,7 +377,7 @@ export function AchievementsSection() {
                     {[
                       [t('modal.distance'), isEn ? enDist(m.distance) : m.distance],
                       [t('modal.date'), m.date],
-                      [t('modal.location'), isEn ? enName(m.location) : m.location],
+                      [t('modal.location'), isEn ? m.locationEn : m.location],
                     ].map(([label, value]) => (
                       <div key={label}>
                         <dt className="text-[#E1FFFB]/45 text-xs font-mono uppercase tracking-wider mb-1">{label}</dt>
