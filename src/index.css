@@ -147,10 +147,10 @@ input:focus-visible,
 }
 .liquid-glass-blue:hover::after { opacity: 1; }
 
-/* ── Con trỏ tuỳ biến kiểu donquaan: một vòng tròn mảnh chạy theo con trỏ có
-      độ trễ. mix-blend-mode: difference → vòng TỰ ĐẢO MÀU theo nền ngay tại
+/* ── Con trỏ tuỳ biến kiểu donquaan: một chấm tròn đặc chạy theo con trỏ có
+      độ trễ. mix-blend-mode: difference → chấm TỰ ĐẢO MÀU theo nền ngay tại
       điểm tiếp xúc: phần nằm trên vùng tối → sáng, phần trên nền sáng → tối.
-      Chỉ đổi cục bộ ở chỗ lia tới, không đổi cả vòng. ── */
+      Chỉ đổi cục bộ ở chỗ lia tới. ── */
 .has-custom-cursor,
 .has-custom-cursor * {
   cursor: none !important;
@@ -165,15 +165,15 @@ input:focus-visible,
   will-change: transform;
   width: 40px;
   height: 40px;
-  border: 2px solid #ffffff;
-  background: transparent;
+  border: none;
+  background: #ffffff; /* chấm tròn đặc, lấp đầy */
   mix-blend-mode: difference;
   z-index: 99999;
   transition: opacity 0.3s ease, width 0.28s ease, height 0.28s ease;
 }
 .cursor-ring.is-visible { opacity: 1; }
 
-/* Rê vào nút/link: vòng nở to (vẫn là vòng mảnh, không đổ nền) */
+/* Rê vào nút/link: chấm nở to */
 .cursor-ring.is-hover {
   width: 66px;
   height: 66px;
