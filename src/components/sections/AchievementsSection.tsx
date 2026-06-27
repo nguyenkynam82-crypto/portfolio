@@ -211,16 +211,14 @@ export function AchievementsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0, transition: { duration: 0.45, delay: (i % 4) * 0.06 } }}
                 viewport={{ once: true, margin: '-30px' }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="group block w-full text-center cursor-pointer relative hover:z-10"
+                className="group block w-full text-center cursor-pointer relative hover:z-20"
               >
-                <div className="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">
+                <div className="aspect-square rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/30 group-hover:shadow-2xl group-hover:scale-[1.6] transition-all duration-500 ease-out">
                   <img
                     src={`${BASE}${med.img}`}
                     alt={`Huy chương ${med.distance} ${med.event} ${med.year}`}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="mt-3">
