@@ -1,13 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 const INTERACTIVE = 'a, button, input, textarea, select, label, summary, [role="button"], [role="switch"], [data-cursor="hover"]';
-// Nền/nút màu navy → đổi cursor sang xanh nhạt (màu nền) để thấy được.
-const DARK = '.liquid-glass-blue, [data-cursor-dark]';
 
 export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
-  const [onDark, setOnDark] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -38,7 +35,6 @@ export function CustomCursor() {
     const onOver = (e: MouseEvent) => {
       const t = e.target as Element;
       setHover(!!t?.closest?.(INTERACTIVE));
-      setOnDark(!!t?.closest?.(DARK));
     };
     const onEnter = () => setVisible(true);
     const onLeave = () => setVisible(false);
@@ -65,8 +61,7 @@ export function CustomCursor() {
     if (!el) return;
     el.classList.toggle('is-visible', visible);
     el.classList.toggle('is-hover', hover);
-    el.classList.toggle('is-on-dark', onDark);
-  }, [visible, hover, onDark]);
+  }, [visible, hover]);
 
   return null;
 }
