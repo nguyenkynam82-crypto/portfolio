@@ -1,4 +1,4 @@
-import { Mail, Camera } from 'lucide-react';
+import { Mail, Heart } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import logoUrl from '/kn-logo.svg?url';
@@ -7,7 +7,7 @@ const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/nguyen.ky.nam.461926/', Icon: SiFacebook },
   { label: 'Instagram', href: 'https://www.instagram.com/sweatheart_3110/', Icon: SiInstagram },
   { label: 'TikTok', href: 'https://www.tiktok.com/@kn.ng211', Icon: SiTiktok },
-  { label: 'Locket', href: 'https://locket.camera/links/FjwhKP5wLC1Bs9rc7', Icon: Camera },
+  { label: 'Locket', href: 'https://locket.camera/links/FjwhKP5wLC1Bs9rc7', Icon: Heart },
   { label: 'Spotify', href: 'https://open.spotify.com/user/314i5ugiwnduiau7ckqlyc3eadei', Icon: SiSpotify },
 ];
 
@@ -28,7 +28,7 @@ export function Footer() {
               key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
               className="w-11 h-11 rounded-full bg-white/5 hover:bg-white/15 text-white hover-grow flex items-center justify-center"
             >
-              <Icon aria-hidden="true" focusable="false" className="w-5 h-5" />
+              <Icon aria-hidden="true" focusable="false" fill="currentColor" className="w-5 h-5" />
             </a>
           ))}
         </div>

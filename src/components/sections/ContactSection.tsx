@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, MessageCircle, Camera } from 'lucide-react';
+import { Mail, MapPin, MessageCircle, Heart } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
 import { glassMove } from '../../lib/glass';
 
@@ -9,7 +9,7 @@ const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/nguyen.ky.nam.461926/', Icon: SiFacebook },
   { label: 'Instagram', href: 'https://www.instagram.com/sweatheart_3110/', Icon: SiInstagram },
   { label: 'TikTok', href: 'https://www.tiktok.com/@kn.ng211', Icon: SiTiktok },
-  { label: 'Locket', href: 'https://locket.camera/links/FjwhKP5wLC1Bs9rc7', Icon: Camera },
+  { label: 'Locket', href: 'https://locket.camera/links/FjwhKP5wLC1Bs9rc7', Icon: Heart },
   { label: 'Spotify', href: 'https://open.spotify.com/user/314i5ugiwnduiau7ckqlyc3eadei', Icon: SiSpotify },
 ];
 
@@ -55,7 +55,7 @@ export function ContactSection() {
                   onMouseMove={glassMove}
                   className="w-12 h-12 rounded-full liquid-glass text-white hover-grow flex items-center justify-center"
                 >
-                  <Icon aria-hidden="true" className="w-5 h-5" />
+                  <Icon aria-hidden="true" fill="currentColor" className="w-5 h-5" />
                 </a>
               ))}
             </div>
