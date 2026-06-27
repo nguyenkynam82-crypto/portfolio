@@ -20,8 +20,8 @@ export function Hero() {
           <h1 data-cursor-dark className="font-heading font-black uppercase tracking-tight">
             {/* Font Saira + IN HOA. "Ý CHÍ DẪN ĐẾN" nhỏ; "THÀNH CÔNG" to + gradient.
                 Saira render dấu Ẫ chuẩn (lúc trước thấy hỏng là do cache font cũ). */}
-            <span className={`block ${isEn ? 'text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] xl:text-[10rem]' : 'text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]'} text-white leading-[1.05]`}>{t('hero.title1')}</span>
-            <span className={`text-mask-gradient inline-block ${isEn ? 'text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[11rem]' : 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem]'} leading-[1.1] py-2`}>{t('hero.title2')}</span>
+            <span className={`block ${isEn ? 'text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] xl:text-[11rem]' : 'text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] xl:text-[11rem]'} text-white leading-[1.05]`}>{t('hero.title1')}</span>
+            <span className={`text-mask-gradient inline-block ${isEn ? 'text-6xl sm:text-8xl md:text-9xl lg:text-[9rem] xl:text-[12rem]' : 'text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem]'} leading-[1.1] py-2`}>{t('hero.title2')}</span>
           </h1>
         </motion.div>
       </div>
