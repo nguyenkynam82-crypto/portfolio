@@ -14,11 +14,11 @@ export function LangToggle() {
       aria-label={isEn ? 'Switch to Vietnamese' : 'Switch to English'}
       onMouseMove={glassMove}
       onClick={() => setLanguage(isEn ? 'vi' : 'en')}
-      className="relative inline-flex items-center h-9 w-16 rounded-full liquid-glass-blue shrink-0 pointer-events-auto"
+      className="relative inline-flex items-center h-7 w-[52px] rounded-full liquid-glass-blue shrink-0 pointer-events-auto"
     >
       <span
-        className="absolute top-1 left-1 h-7 w-7 rounded-full bg-[#ffffff] text-[#060935] text-[11px] font-bold flex items-center justify-center shadow-md transition-transform duration-300 ease-out"
-        style={{ transform: isEn ? 'translateX(28px)' : 'translateX(0)' }}
+        className="absolute top-1 left-1 h-5 w-5 rounded-full bg-[#ffffff] text-[#060935] text-[9px] font-bold flex items-center justify-center shadow-md transition-transform duration-300 ease-out"
+        style={{ transform: isEn ? 'translateX(24px)' : 'translateX(0)' }}
       >
         {isEn ? 'EN' : 'VI'}
       </span>

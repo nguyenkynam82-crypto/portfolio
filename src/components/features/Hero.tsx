@@ -5,7 +5,7 @@ export function Hero() {
   const { t, language } = useLanguage();
   const isEn = language === 'en';
   return (
-    <section className="relative min-h-[100svh] w-full bg-black overflow-hidden flex flex-col justify-start px-6 md:px-12 lg:px-20 pt-32 lg:pt-20 pb-32">
+    <section className="relative min-h-[100svh] w-full bg-black overflow-hidden flex flex-col justify-start px-6 md:px-12 lg:px-20 pt-24 lg:pt-20 pb-32">
       {/* Ambient Depth Background */}
       <div className="absolute inset-0 pointer-events-none z-0 ambient-glow" />
 
