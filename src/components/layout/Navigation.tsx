@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import logoUrl from '/kn-logo.svg?url';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { Magnetic } from '../ui/Magnetic';
 import { LangToggle } from '../ui/LangToggle';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -11,6 +12,7 @@ const ZALO = 'https://zalo.me/0789500902';
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useLanguage();
@@ -24,6 +26,7 @@ export function Navigation() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    setMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100);
@@ -34,6 +37,7 @@ export function Navigation() {
 
   const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    setMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
@@ -92,6 +96,16 @@ export function Navigation() {
         className="pointer-events-auto flex items-center gap-3 xl:gap-4 justify-self-end"
       >
         <LangToggle />
+        <button
+          type="button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          onMouseMove={glassMove}
+          className="lg:hidden w-10 h-10 rounded-full liquid-glass text-white flex items-center justify-center shrink-0"
+        >
+          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
         <Magnetic>
           <a
             href={ZALO}
@@ -104,6 +118,28 @@ export function Navigation() {
           </a>
         </Magnetic>
       </motion.div>
+
+      {/* Mobile dropdown menu (thay cho thanh menu ẩn trên điện thoại) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            aria-label="Điều hướng"
+            className="lg:hidden absolute top-full right-4 mt-2 w-56 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex flex-col gap-0.5 shadow-2xl pointer-events-auto origin-top-right"
+          >
+            <a href="#" onClick={handleHome} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.home')}</a>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.about')}</a>
+            <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.achievements')}</a>
+            <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.certificates')}</a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.contact')}</a>
+            <a href={ZALO} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="mt-1 px-4 py-3 rounded-xl text-sm font-semibold text-center liquid-glass-blue text-black">{t('nav.cta')}</a>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import logoUrl from '/kn-logo.svg?url';
-import { LangToggle } from '../ui/LangToggle';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { glassMove } from '../../lib/glass';
 
@@ -16,7 +15,6 @@ export function BottomNav() {
       className="fixed bottom-6 left-1/2 z-[60] flex md:hidden items-center gap-4 bg-black/60 border border-white/10 backdrop-blur-lg rounded-full p-2 shadow-2xl"
     >
       <img src={logoUrl} alt="kn." className="h-6 w-auto pl-3 pr-1" />
-      <LangToggle />
       <a
         href={ZALO}
         target="_blank"
