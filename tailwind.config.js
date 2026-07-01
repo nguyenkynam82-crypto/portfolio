@@ -30,10 +30,10 @@ export default {
         // THEME RECOLOR (client: kn. / Nguyễn Kỳ Nam) — remap Tailwind's black &
         // white so every existing bg-black / text-white utility renders the brand
         // palette without editing each component:
-        //   black -> #2F3C7E (indigo, used as background)
-        //   white -> #FBEAEB (light pink, used as text/foreground)
-        black: "#2F3C7E",
-        white: "#FBEAEB",
+        //   black -> #89ABE3 (light blue, used as background)
+        //   white -> #EA738D (rose, used as text/foreground)
+        black: "#89ABE3",
+        white: "#EA738D",
       },
       fontFamily: {
         sans: ['"Be Vietnam Pro"', "sans-serif"],
