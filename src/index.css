@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    /* LIGHT THEME (client kn.): mint background #E1FFFB + navy text #060935 */
-    --background: 170 100% 94%;
-    --foreground: 236 80% 12%;
-    --muted: 170 40% 88%;
-    --muted-foreground: 236 28% 32%;
-    --primary: 236 80% 12%;
-    --primary-foreground: 170 100% 94%;
-    --secondary: 170 40% 88%;
-    --accent: 170 40% 88%;
-    --border: 200 35% 80%;
-    --input: 200 35% 80%;
+    /* THEME (client kn.): indigo background #2F3C7E + light-pink text #FBEAEB */
+    --background: 230 46% 34%;
+    --foreground: 356 68% 95%;
+    --muted: 230 32% 44%;
+    --muted-foreground: 350 22% 80%;
+    --primary: 356 68% 95%;
+    --primary-foreground: 230 46% 34%;
+    --secondary: 230 32% 44%;
+    --accent: 230 32% 44%;
+    --border: 230 25% 52%;
+    --input: 230 25% 52%;
   }
 }
 
@@ -244,7 +244,7 @@ input:focus-visible,
 }
 
 .ambient-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(6, 9, 53, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 50%, rgba(251, 234, 235, 0.07) 0%, transparent 65%);
   animation: ambient-pulse 8s ease-in-out infinite;
 }
 
@@ -255,7 +255,7 @@ input:focus-visible,
 }
 
 .text-mask-gradient {
-  background: linear-gradient(270deg, #060935, #3a52c4, #060935, #14205e);
+  background: linear-gradient(270deg, #FBEAEB, #c3b0ee, #FBEAEB, #a9b8ee);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

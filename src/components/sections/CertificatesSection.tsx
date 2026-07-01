@@ -85,9 +85,9 @@ export function CertificatesSection() {
         <svg width="0" height="0" className="absolute" aria-hidden="true">
           <defs>
             <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3a52c4" />
-              <stop offset="50%" stopColor="#14205e" />
-              <stop offset="100%" stopColor="#060935" />
+              <stop offset="0%" stopColor="#FBEAEB" />
+              <stop offset="50%" stopColor="#c3b0ee" />
+              <stop offset="100%" stopColor="#a9b8ee" />
             </linearGradient>
           </defs>
         </svg>

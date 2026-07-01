@@ -105,17 +105,17 @@ export function MusicPlayer() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           onMouseMove={glassMove}
-          className="flex items-center gap-1.5 liquid-glass-blue text-black rounded-full p-1.5 pr-2"
+          className="flex items-center gap-1.5 liquid-glass-blue text-white rounded-full p-1.5 pr-2"
         >
           <button
             type="button"
             onClick={toggle}
             disabled={!ready}
             aria-label={playing ? 'Tạm dừng nhạc' : 'Phát nhạc'}
-            className="w-11 h-11 rounded-full bg-black/10 text-black flex items-center justify-center hover:bg-black/20 hover-grow disabled:opacity-40 shrink-0 relative"
+            className="w-11 h-11 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 hover-grow disabled:opacity-40 shrink-0 relative"
           >
             {playing ? <Pause className="w-5 h-5" /> : <Music2 className="w-5 h-5" />}
-            {playing && <span className="absolute inset-0 rounded-full border-2 border-black/30 animate-ping" />}
+            {playing && <span className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping" />}
           </button>
 
           <AnimatePresence initial={false}>
@@ -129,13 +129,13 @@ export function MusicPlayer() {
               >
                 <div className="min-w-0 max-w-[160px] leading-tight pl-1">
                   <div className="text-[11px] font-semibold truncate">{current.title}</div>
-                  <div className="text-[10px] text-black/60 truncate">{current.artist}</div>
+                  <div className="text-[10px] text-white/60 truncate">{current.artist}</div>
                 </div>
                 <button
                   type="button"
                   onClick={next}
                   aria-label="Bài tiếp theo"
-                  className="w-8 h-8 rounded-full text-black hover:bg-black/10 hover-grow flex items-center justify-center shrink-0"
+                  className="w-8 h-8 rounded-full text-white hover:bg-white/10 hover-grow flex items-center justify-center shrink-0"
                 >
                   <SkipForward className="w-4 h-4" />
                 </button>
@@ -150,7 +150,7 @@ export function MusicPlayer() {
               onClick={() => setShowVol((s) => !s)}
               aria-label="Âm lượng nhạc"
               aria-expanded={showVol}
-              className="w-9 h-9 rounded-full text-black hover:bg-black/10 hover-grow flex items-center justify-center"
+              className="w-9 h-9 rounded-full text-white hover:bg-white/10 hover-grow flex items-center justify-center"
             >
               {volume === 0 ? <VolumeX className="w-4 h-4" /> : volume < 50 ? <Volume1 className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>
@@ -170,7 +170,7 @@ export function MusicPlayer() {
                     value={volume}
                     onChange={(e) => setVol(Number(e.target.value))}
                     aria-label="Điều chỉnh âm lượng nhạc"
-                    className="w-24 mx-2 accent-[#060935] cursor-pointer"
+                    className="w-24 mx-2 accent-[#FBEAEB] cursor-pointer"
                   />
                 </motion.div>
               )}
