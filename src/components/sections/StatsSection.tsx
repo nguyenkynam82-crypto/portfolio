@@ -9,7 +9,7 @@ const stats: Stat[] = [
   { value: '4', labelVi: 'Chứng chỉ & bằng khen', labelEn: 'Certificates & awards', descVi: 'IELTS, Cambridge A2, Violympic', descEn: 'IELTS, Cambridge A2, Violympic' },
   { value: '5–21', labelVi: 'Cự li (km)', labelEn: 'Distances (km)', descVi: 'Từ 5km đến bán marathon', descEn: 'From 5km to half marathon' },
   { value: '10.000+', labelVi: 'Người theo dõi', labelEn: 'Followers', descVi: 'Tổng trên các nền tảng MXH', descEn: 'Across social platforms' },
-  { value: '—', labelVi: 'Tổng quãng đường', labelEn: 'Total distance', descVi: 'Km tích luỹ qua các giải', descEn: 'Cumulative km across races' },
+  { value: '120+', labelVi: 'Tổng quãng đường (km)', labelEn: 'Total distance (km)', descVi: 'Km tích luỹ qua các giải', descEn: 'Cumulative km across races' },
 ];
 
 export function StatsSection() {
