@@ -74,9 +74,10 @@ export const dictionaries: Record<Language, Dictionary> = {
     'contact.emailLabel': 'Email',
     'contact.addressLabel': 'Địa chỉ',
     'contact.address': 'Hưng Phú, Cần Thơ, Việt Nam',
-    'contact.zaloTitle': 'Nhắn Zalo cho mình',
-    'contact.zaloSub': 'Quét mã hoặc bấm nút bên dưới',
+    'contact.zaloTitle': 'Kết nối với mình',
+    'contact.zaloSub': 'Quét mã Zalo hoặc nhắn mình bên dưới',
     'contact.zaloCta': 'Hợp tác cùng kn.',
+    'contact.msgCta': 'Nhắn Messenger',
 
     // Footer
     'footer.rights': 'Bản quyền đã được bảo hộ.',
@@ -152,9 +153,10 @@ export const dictionaries: Record<Language, Dictionary> = {
     'contact.emailLabel': 'Email',
     'contact.addressLabel': 'Address',
     'contact.address': 'Hungphu, Cantho, Vietnam',
-    'contact.zaloTitle': 'Message me on Zalo',
-    'contact.zaloSub': 'Scan the code or tap below',
+    'contact.zaloTitle': "Let's connect",
+    'contact.zaloSub': 'Scan the Zalo code or message me below',
     'contact.zaloCta': 'Work with kn.',
+    'contact.msgCta': 'Message on Messenger',
 
     // Footer
     'footer.rights': 'All rights reserved.',

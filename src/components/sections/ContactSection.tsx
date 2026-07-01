@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, MessageCircle, Heart } from 'lucide-react';
-import { SiFacebook, SiInstagram, SiTiktok, SiSpotify } from 'react-icons/si';
+import { SiFacebook, SiInstagram, SiTiktok, SiSpotify, SiMessenger } from 'react-icons/si';
 import { glassMove } from '../../lib/glass';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const ZALO = 'https://zalo.me/0789500902';
+// TODO: xác nhận link Messenger đúng (m.me/<username> của kn.)
+const MESSENGER = 'https://m.me/nguyen.ky.nam.461926';
 
 const socials = [
   { label: 'Facebook', href: 'https://www.facebook.com/nguyen.ky.nam.461926/', Icon: SiFacebook },
@@ -73,13 +75,22 @@ export function ContactSection() {
             </div>
             <h3 className="text-2xl font-display font-semibold text-white mb-1">{t('contact.zaloTitle')}</h3>
             <p className="text-foreground/70 mb-6">{t('contact.zaloSub')}</p>
-            <a
-              href={ZALO} target="_blank" rel="noopener noreferrer"
-              onMouseMove={glassMove}
-              className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold inline-flex items-center gap-2 hover-grow"
-            >
-              <MessageCircle size={18} /> {t('contact.zaloCta')}
-            </a>
+            <div className="flex flex-col items-center gap-3 w-full">
+              <a
+                href={ZALO} target="_blank" rel="noopener noreferrer"
+                onMouseMove={glassMove}
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+              >
+                <MessageCircle size={18} /> {t('contact.zaloCta')}
+              </a>
+              <a
+                href={MESSENGER} target="_blank" rel="noopener noreferrer"
+                onMouseMove={glassMove}
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+              >
+                <SiMessenger className="w-[18px] h-[18px]" aria-hidden="true" /> {t('contact.msgCta')}
+              </a>
+            </div>
             <span className="text-foreground/50 text-sm font-mono mt-4">Zalo · 0789 500 902</span>
           </motion.div>
         </div>
