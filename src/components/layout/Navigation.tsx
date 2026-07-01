@@ -32,6 +32,16 @@ export function Navigation() {
     }
   };
 
+  const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header role="banner" className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-10 w-full pointer-events-none grid grid-cols-2 lg:grid-cols-3 items-center gap-4 transition-all duration-500 ${
       scrolled ? 'py-4 bg-black/70 backdrop-blur-md border-b border-white/10' : 'py-6'
@@ -66,6 +76,7 @@ export function Navigation() {
           onMouseMove={glassMove}
           className="flex items-center gap-1 liquid-glass rounded-full px-2 py-1.5 pointer-events-auto"
         >
+          <a href="#" onClick={handleHome} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.home')}</a>
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.about')}</a>
           <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.achievements')}</a>
           <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.certificates')}</a>

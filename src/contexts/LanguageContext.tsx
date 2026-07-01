@@ -9,6 +9,7 @@ type Dictionary = {
 export const dictionaries: Record<Language, Dictionary> = {
   vi: {
     // Navigation
+    'nav.home': 'Trang chủ',
     'nav.about': 'Giới thiệu',
     'nav.achievements': 'Thành tích',
     'nav.certificates': 'Chứng chỉ',
@@ -89,6 +90,7 @@ export const dictionaries: Record<Language, Dictionary> = {
   },
   en: {
     // Navigation
+    'nav.home': 'Home',
     'nav.about': 'About',
     'nav.achievements': 'Achievements',
     'nav.certificates': 'Certificates',
