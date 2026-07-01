@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, MessageCircle, Heart } from 'lucide-react';
-import { SiFacebook, SiInstagram, SiTiktok, SiSpotify, SiMessenger } from 'react-icons/si';
+import { Mail, MapPin, Phone, Heart } from 'lucide-react';
+import { SiFacebook, SiInstagram, SiTiktok, SiSpotify, SiMessenger, SiZalo } from 'react-icons/si';
 import { glassMove } from '../../lib/glass';
 import { useLanguage } from '../../contexts/LanguageContext';
 
+const PHONE = 'tel:0789500902';
 const ZALO = 'https://zalo.me/0789500902';
 // TODO: xác nhận link Messenger đúng (m.me/<username> của kn.)
 const MESSENGER = 'https://m.me/nguyen.ky.nam.461926';
@@ -70,18 +71,22 @@ export function ContactSection() {
             initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8, delay: 0.1 }}
             className="bg-white/[0.04] border border-white/10 rounded-[2rem] p-8 md:p-10 backdrop-blur-xl flex flex-col items-center text-center"
           >
-            <div className="bg-[#ffffff] p-3 rounded-2xl shadow-lg mb-6">
-              <img src={`${import.meta.env.BASE_URL}zalo-qr.jpg`} alt="Mã QR Zalo của kn." loading="lazy" decoding="async" className="w-44 h-44 object-contain rounded-lg" />
-            </div>
             <h3 className="text-2xl font-display font-semibold text-white mb-1">{t('contact.zaloTitle')}</h3>
             <p className="text-foreground/70 mb-6">{t('contact.zaloSub')}</p>
             <div className="flex flex-col items-center gap-3 w-full">
+              <a
+                href={PHONE}
+                onMouseMove={glassMove}
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+              >
+                <Phone size={18} /> {t('contact.zaloCta')}
+              </a>
               <a
                 href={ZALO} target="_blank" rel="noopener noreferrer"
                 onMouseMove={glassMove}
                 className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
               >
-                <MessageCircle size={18} /> {t('contact.zaloCta')}
+                <SiZalo className="w-[18px] h-[18px]" aria-hidden="true" /> {t('contact.zaloBtn')}
               </a>
               <a
                 href={MESSENGER} target="_blank" rel="noopener noreferrer"
