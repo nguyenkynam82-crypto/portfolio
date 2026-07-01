@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    /* THEME (client kn.): light-blue background #89ABE3 + rose text #EA738D */
-    --background: 217 62% 71%;
-    --foreground: 347 74% 68%;
-    --muted: 217 45% 64%;
-    --muted-foreground: 347 55% 50%;
-    --primary: 347 74% 62%;
-    --primary-foreground: 217 62% 71%;
-    --secondary: 217 45% 64%;
-    --accent: 217 45% 64%;
-    --border: 217 40% 58%;
-    --input: 217 40% 58%;
+    /* THEME (client kn.): indigo background #2F3C7E + light-pink text #FBEAEB */
+    --background: 230 46% 34%;
+    --foreground: 356 68% 95%;
+    --muted: 230 32% 44%;
+    --muted-foreground: 350 22% 80%;
+    --primary: 356 68% 95%;
+    --primary-foreground: 230 46% 34%;
+    --secondary: 230 32% 44%;
+    --accent: 230 32% 44%;
+    --border: 230 25% 52%;
+    --input: 230 25% 52%;
   }
 }
 
@@ -108,18 +108,17 @@ input:focus-visible,
 
 /* Biến thể XANH (navy trong suốt) cho các nút màu xanh */
 .liquid-glass-blue {
-  /* Xanh theo màu nền (đậm hơn nền để nổi) + lớp bóng glossy (kiểu liquid glass iOS) */
+  /* Navy đặc như cũ + lớp bóng glossy ở trên (kiểu liquid glass iOS) */
   background:
     linear-gradient(155deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 38%, rgba(255, 255, 255, 0) 60%),
-    rgba(61, 98, 172, 0.95);
-  color: #FDEFF2; /* chữ sáng để đọc được trên nút xanh */
+    rgba(7, 10, 56, 0.95);
   backdrop-filter: blur(8px) saturate(1.3);
   -webkit-backdrop-filter: blur(8px) saturate(1.3);
   border: none;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.45),
     inset 0 -2px 6px rgba(0, 0, 0, 0.22),
-    0 10px 28px rgba(46, 76, 143, 0.32);
+    0 10px 28px rgba(6, 9, 53, 0.32);
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.4s ease, filter 0.4s ease;
@@ -245,7 +244,7 @@ input:focus-visible,
 }
 
 .ambient-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(46, 76, 143, 0.08) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 50%, rgba(251, 234, 235, 0.07) 0%, transparent 65%);
   animation: ambient-pulse 8s ease-in-out infinite;
 }
 
@@ -256,7 +255,7 @@ input:focus-visible,
 }
 
 .text-mask-gradient {
-  background: linear-gradient(270deg, #EA738D, #3D5CA8, #EA738D, #7A4FA8);
+  background: linear-gradient(270deg, #FBEAEB, #c3b0ee, #FBEAEB, #a9b8ee);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
