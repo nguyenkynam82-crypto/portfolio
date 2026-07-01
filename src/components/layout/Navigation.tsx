@@ -1,8 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import logoUrl from '/kn-logo.svg?url';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 import { Magnetic } from '../ui/Magnetic';
 import { LangToggle } from '../ui/LangToggle';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -12,7 +11,6 @@ const ZALO = 'https://zalo.me/0789500902';
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useLanguage();
@@ -24,20 +22,7 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setMenuOpen(false);
+  const goTop = () => {
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
@@ -46,100 +31,87 @@ export function Navigation() {
     }
   };
 
-  return (
-    <header role="banner" className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-10 w-full pointer-events-none grid grid-cols-2 lg:grid-cols-3 items-center gap-4 transition-all duration-500 ${
-      scrolled ? 'py-4 bg-black/70 backdrop-blur-md border-b border-white/10' : 'py-6'
-    }`}>
-      {/* Left: Logo */}
-      <motion.a
-        onClick={(e) => {
-          e.preventDefault();
-          if (location.pathname !== '/') {
-            navigate('/');
-            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        }}
-        href="#"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex items-center gap-3 cursor-pointer pointer-events-auto justify-self-start"
-      >
-        <img src={logoUrl} alt="kn. — Nguyễn Kỳ Nam" className="h-8 w-auto object-contain" />
-      </motion.a>
+  const handleHome = (e: React.MouseEvent<HTMLAnchorElement>) => { e.preventDefault(); goTop(); };
 
-      {/* Center: Links */}
-      <div className="hidden lg:flex justify-self-center">
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Cùng bộ link cho cả desktop (giữa) lẫn mobile (hàng dưới) — chỉ khác class.
+  const renderLinks = (cls: string) => (
+    <>
+      <a href="#" onClick={handleHome} className={cls}>{t('nav.home')}</a>
+      <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={cls}>{t('nav.about')}</a>
+      <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className={cls}>{t('nav.achievements')}</a>
+      <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className={cls}>{t('nav.certificates')}</a>
+      <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={cls}>{t('nav.contact')}</a>
+    </>
+  );
+
+  const deskCls = 'px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap';
+  const mobCls = 'px-2.5 py-1.5 rounded-full text-[13px] font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors whitespace-nowrap shrink-0';
+
+  return (
+    <header role="banner" className={`fixed top-0 left-0 right-0 z-50 w-full pointer-events-none transition-all duration-500 ${
+      scrolled ? 'bg-black/70 backdrop-blur-md border-b border-white/10' : ''
+    }`}>
+      {/* Hàng trên: logo + (menu giữa trên desktop) + toggle/CTA */}
+      <div className={`relative px-4 md:px-10 flex items-center justify-between gap-3 transition-all duration-500 ${scrolled ? 'py-3' : 'py-4 lg:py-6'}`}>
+        <motion.a
+          onClick={(e) => { e.preventDefault(); goTop(); }}
+          href="#"
+          initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-3 cursor-pointer pointer-events-auto shrink-0"
+        >
+          <img src={logoUrl} alt="kn. — Nguyễn Kỳ Nam" className="h-8 w-auto object-contain" />
+        </motion.a>
+
+        {/* Menu giữa (desktop) */}
         <motion.nav
           aria-label="Điều hướng chính"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           onMouseMove={glassMove}
-          className="flex items-center gap-1 liquid-glass rounded-full px-2 py-1.5 pointer-events-auto"
+          className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-1 liquid-glass rounded-full px-2 py-1.5 pointer-events-auto"
         >
-          <a href="#" onClick={handleHome} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.home')}</a>
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.about')}</a>
-          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.achievements')}</a>
-          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.certificates')}</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-2 rounded-full text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-colors">{t('nav.contact')}</a>
+          {renderLinks(deskCls)}
         </motion.nav>
+
+        <motion.div
+          initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="pointer-events-auto flex items-center gap-3 shrink-0"
+        >
+          <LangToggle />
+          <Magnetic>
+            <a
+              href={ZALO}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseMove={glassMove}
+              className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0 hover-grow"
+            >
+              {t('nav.cta')}
+            </a>
+          </Magnetic>
+        </motion.div>
       </div>
 
-      {/* Right: CTA */}
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-auto flex items-center gap-3 xl:gap-4 justify-self-end"
-      >
-        <LangToggle />
-        <button
-          type="button"
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Menu"
-          aria-expanded={menuOpen}
+      {/* Hàng dưới: menu ngang cho mobile (hiện luôn, không cần bấm) */}
+      <div className="lg:hidden px-3 pb-2 flex justify-center">
+        <motion.nav
+          aria-label="Điều hướng chính"
+          initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.15 }}
           onMouseMove={glassMove}
-          className="lg:hidden w-10 h-10 rounded-full liquid-glass text-white flex items-center justify-center shrink-0"
+          className="flex items-center gap-0.5 liquid-glass rounded-full px-1.5 py-1 pointer-events-auto max-w-full overflow-x-auto"
         >
-          {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-        <Magnetic>
-          <a
-            href={ZALO}
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseMove={glassMove}
-            className="liquid-glass-blue text-black rounded-full px-6 py-2.5 text-sm font-medium hidden sm:block shrink-0 hover-grow"
-          >
-            {t('nav.cta')}
-          </a>
-        </Magnetic>
-      </motion.div>
-
-      {/* Mobile dropdown menu (thay cho thanh menu ẩn trên điện thoại) */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            aria-label="Điều hướng"
-            className="lg:hidden absolute top-full right-4 mt-2 w-56 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex flex-col gap-0.5 shadow-2xl pointer-events-auto origin-top-right"
-          >
-            <a href="#" onClick={handleHome} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.home')}</a>
-            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.about')}</a>
-            <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.achievements')}</a>
-            <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.certificates')}</a>
-            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="px-4 py-3 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors">{t('nav.contact')}</a>
-            <a href={ZALO} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="mt-1 px-4 py-3 rounded-xl text-sm font-semibold text-center liquid-glass-blue text-black">{t('nav.cta')}</a>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+          {renderLinks(mobCls)}
+        </motion.nav>
+      </div>
     </header>
   );
 }

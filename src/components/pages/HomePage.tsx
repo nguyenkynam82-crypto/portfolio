@@ -4,7 +4,6 @@ import { StatsSection } from '../sections/StatsSection';
 import { AchievementsSection } from '../sections/AchievementsSection';
 import { CertificatesSection } from '../sections/CertificatesSection';
 import { ContactSection } from '../sections/ContactSection';
-import { BottomNav } from '../layout/BottomNav';
 import { Navigation } from '../layout/Navigation';
 import { Footer } from '../layout/Footer';
 
@@ -14,7 +13,6 @@ export function HomePage() {
   return (
     <>
       <Navigation />
-      <BottomNav />
 
       <main id="main-content" tabIndex={-1}>
         <Hero />
