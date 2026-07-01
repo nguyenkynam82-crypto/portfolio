@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import logoUrl from '/kn-logo.svg?url';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Magnetic } from '../ui/Magnetic';
 import { LangToggle } from '../ui/LangToggle';
@@ -11,6 +11,7 @@ const ZALO = 'https://zalo.me/0789500902';
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useLanguage();
@@ -62,17 +63,26 @@ export function Navigation() {
 
         {/* Menu: mobile = ô inline co giãn (vuốt ngang nếu hẹp); desktop = pill canh giữa */}
         <motion.nav
+          ref={navRef}
           aria-label="Điều hướng chính"
           data-lenis-prevent
-          initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.1 }}
           onMouseMove={glassMove}
-          className="flex items-center gap-0.5 lg:gap-1 liquid-glass rounded-full px-1.5 py-1 lg:px-2 lg:py-1.5 pointer-events-auto flex-1 min-w-0 overflow-x-auto touch-pan-x overscroll-x-contain mx-1 lg:flex-none lg:mx-0 lg:overflow-visible lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+          className="liquid-glass rounded-full px-1.5 py-1 lg:px-2 lg:py-1.5 pointer-events-auto flex-1 min-w-0 overflow-hidden mx-1 lg:flex-none lg:mx-0 lg:overflow-visible lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
         >
-          <a href="#" onClick={handleHome} className={linkCls}>{t('nav.home')}</a>
-          <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={linkCls}>{t('nav.about')}</a>
-          <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className={linkCls}>{t('nav.achievements')}</a>
-          <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className={linkCls}>{t('nav.certificates')}</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={linkCls}>{t('nav.contact')}</a>
+          <motion.div
+            drag="x"
+            dragConstraints={navRef}
+            dragElastic={0.05}
+            dragMomentum={false}
+            className="flex items-center gap-0.5 lg:gap-1 w-max cursor-grab active:cursor-grabbing"
+          >
+            <a href="#" onClick={handleHome} className={linkCls}>{t('nav.home')}</a>
+            <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={linkCls}>{t('nav.about')}</a>
+            <a href="#achievements" onClick={(e) => handleNavClick(e, 'achievements')} className={linkCls}>{t('nav.achievements')}</a>
+            <a href="#certificates" onClick={(e) => handleNavClick(e, 'certificates')} className={linkCls}>{t('nav.certificates')}</a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={linkCls}>{t('nav.contact')}</a>
+          </motion.div>
         </motion.nav>
 
         <motion.div
