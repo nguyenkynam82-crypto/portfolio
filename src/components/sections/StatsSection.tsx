@@ -4,10 +4,10 @@ import { useLanguage } from '../../contexts/LanguageContext';
 // Số liệu tĩnh — chủ web tự sửa `value`. '—' = chờ điền.
 type Stat = { value: string; labelVi: string; labelEn: string; descVi: string; descEn: string };
 const stats: Stat[] = [
-  { value: '10+', labelVi: 'Huy chương', labelEn: 'Medals', descVi: 'Các cự li 5K · 10K · 21K', descEn: 'Across 5K · 10K · 21K races' },
-  { value: '3', labelVi: 'Half Marathon', labelEn: 'Half Marathons', descVi: 'Đã hoàn thành cự li 21km', descEn: 'Completed the 21km distance' },
+  { value: '10+', labelVi: 'Huy chương', labelEn: 'Medals', descVi: 'Các cự li 5km · 10km · 21km', descEn: 'Across 5K · 10K · 21K races' },
+  { value: '3', labelVi: 'Half Marathon', labelEn: 'Half Marathons', descVi: 'Đã hoàn thành cự li 21km', descEn: 'Completed the 21K distance' },
   { value: '4', labelVi: 'Chứng chỉ & bằng khen', labelEn: 'Certificates & awards', descVi: 'IELTS, Cambridge A2, Violympic', descEn: 'IELTS, Cambridge A2, Violympic' },
-  { value: '5–21', labelVi: 'Cự li (km)', labelEn: 'Distances (km)', descVi: 'Từ 5km đến bán marathon', descEn: 'From 5km to half marathon' },
+  { value: '5–21', labelVi: 'Cự li (km)', labelEn: 'Distances (km)', descVi: 'Từ 5km đến bán marathon', descEn: 'From 5K to half marathon' },
   { value: '10.000+', labelVi: 'Người theo dõi', labelEn: 'Followers', descVi: 'Tổng trên các nền tảng MXH', descEn: 'Across social platforms' },
   { value: '120+', labelVi: 'Tổng quãng đường (km)', labelEn: 'Total distance (km)', descVi: 'Km tích luỹ qua các giải', descEn: 'Cumulative km across races' },
 ];
