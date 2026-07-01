@@ -96,7 +96,6 @@ export function ContactSection() {
                 <SiMessenger className="w-[18px] h-[18px]" aria-hidden="true" /> {t('contact.msgCta')}
               </a>
             </div>
-            <span className="text-foreground/50 text-sm font-mono mt-4">Zalo · 0789 500 902</span>
           </motion.div>
         </div>
       </div>
