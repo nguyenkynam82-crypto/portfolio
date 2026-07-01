@@ -77,21 +77,21 @@ export function ContactSection() {
               <a
                 href={PHONE}
                 onMouseMove={glassMove}
-                className="liquid-glass-blue text-white rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
               >
                 <Phone size={18} /> {t('contact.zaloCta')}
               </a>
               <a
                 href={ZALO} target="_blank" rel="noopener noreferrer"
                 onMouseMove={glassMove}
-                className="liquid-glass-blue text-white rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
               >
                 <SiZalo className="w-[18px] h-[18px]" aria-hidden="true" /> {t('contact.zaloBtn')}
               </a>
               <a
                 href={MESSENGER} target="_blank" rel="noopener noreferrer"
                 onMouseMove={glassMove}
-                className="liquid-glass-blue text-white rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
+                className="liquid-glass-blue text-black rounded-full px-8 py-3.5 text-base font-semibold flex items-center justify-center gap-2 hover-grow min-w-[240px]"
               >
                 <SiMessenger className="w-[18px] h-[18px]" aria-hidden="true" /> {t('contact.msgCta')}
               </a>

@@ -27,13 +27,13 @@ export default {
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        // THEME RECOLOR (client: kn. / Nguyễn Kỳ Nam) — remap Tailwind's black &
-        // white so every existing bg-black / text-white utility renders the brand
-        // palette without editing each component:
-        //   black -> #2F3C7E (indigo, used as background)
-        //   white -> #FBEAEB (light pink, used as text/foreground)
-        black: "#2F3C7E",
-        white: "#FBEAEB",
+        // LIGHT THEME RECOLOR (client: kn. / Nguyễn Kỳ Nam) — remap Tailwind's
+        // black & white so every existing bg-black / text-white utility renders
+        // the brand palette without editing each component:
+        //   black -> #E1FFFB (mint, used as background)
+        //   white -> #060935 (navy, used as text/foreground)
+        black: "#E1FFFB",
+        white: "#060935",
       },
       fontFamily: {
         sans: ['"Be Vietnam Pro"', "sans-serif"],
