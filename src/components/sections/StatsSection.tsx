@@ -4,10 +4,10 @@ import { useLanguage } from '../../contexts/LanguageContext';
 // Số liệu tĩnh — chủ web tự sửa `value`. '—' = chờ điền.
 type Stat = { value: string; labelVi: string; labelEn: string; descVi: string; descEn: string };
 const stats: Stat[] = [
-  { value: '10+', labelVi: 'Huy chương', labelEn: 'Medals', descVi: 'Các cự li 5km · 10km · 21km', descEn: 'Across 5K · 10K · 21K races' },
+  { value: '5–21', labelVi: 'Cự li (km)', labelEn: 'Distances (km)', descVi: 'Từ 5km đến bán marathon', descEn: 'From 5K to half marathon' },
   { value: '3', labelVi: 'Half Marathon', labelEn: 'Half Marathons', descVi: 'Đã hoàn thành cự li 21km', descEn: 'Completed the 21K distance' },
   { value: '4', labelVi: 'Chứng chỉ & bằng khen', labelEn: 'Certificates & awards', descVi: 'IELTS, Cambridge A2, Violympic', descEn: 'IELTS, Cambridge A2, Violympic' },
-  { value: '5–21', labelVi: 'Cự li (km)', labelEn: 'Distances (km)', descVi: 'Từ 5km đến bán marathon', descEn: 'From 5K to half marathon' },
+  { value: '10+', labelVi: 'Huy chương', labelEn: 'Medals', descVi: 'Các cự li 5km · 10km · 21km', descEn: 'Across 5K · 10K · 21K races' },
   { value: '10.000+', labelVi: 'Người theo dõi', labelEn: 'Followers', descVi: 'Tổng trên các nền tảng MXH', descEn: 'Across social platforms' },
   { value: '120+', labelVi: 'Tổng quãng đường (km)', labelEn: 'Total distance (km)', descVi: 'Km tích luỹ qua các giải', descEn: 'Cumulative km across races' },
 ];
@@ -30,7 +30,7 @@ export function StatsSection() {
           initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, delay: 0.05 }}
           className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-4 leading-tight"
         >
-          {isEn ? 'kn. in ' : 'kn. qua những '}<span className="text-mask-gradient">{isEn ? 'numbers' : 'con số'}</span>
+          {isEn ? 'kn. in ' : 'kn. và những '}<span className="text-mask-gradient">{isEn ? 'numbers' : 'con số'}</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mt-16">
